@@ -8,7 +8,7 @@ import {useStore} from "../../store/store";
 import {action} from "mobx";
 import {upgradesMock, upgradesRoomMock} from "../main-container/constants";
 import {ACCUM, ACCUM_MULTIPLIER, DEFAULT_INC_TAP_VALUE, TURBO_MULTIPLIER_TAP, TURBO_TIME} from "../../store/constants";
-import bg2 from "../main-container/bg-rich.png";
+import bg2 from "../main-container/miner2.png";
 import styles from './index.module.css';
 import rocket from '../../rocket.png';
 import thunder from '../../thunder.png';
@@ -111,7 +111,7 @@ export const Upgrades: FC<Props> = observer(({ list, roomsUpgrades }) => {
                     postSymbol={i === 0 ? '/tap' : '%'}
                 />
             ))}
-            <div>Room</div>
+            <div>MINERS</div>
             {roomsUpgrades.map((v, i) => (
                 <UpgradeRoomItem key={v.name} data={v} handleBuy={handleBuy} isAvailable={points >= v.base_price} />
             ))}

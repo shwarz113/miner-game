@@ -5,7 +5,7 @@ import airdrop from '../investments/img/airdrop.png';
 import p2p from '../investments/img/p2p.png';
 import exchange from '../investments/img/exchange.png';
 import tap from './tap.png';
-import scyscrapper from './scyscrapper.png';
+import minerPro from './miner2.png';
 import thunder from '../../thunder.png';
 
 export const PRICE_MULTIPLIER = 1.2;
@@ -21,5 +21,5 @@ export const upgradesMock: Investments = [
     { name: 'Up energy storage', base_price: 100, pic: thunder, base_income: 15 },
 ];
 export const upgradesRoomMock: Investments = [
-    { name: 'Downtown apartment', description: `It's cool apartment with excellent views, which gives you inspiration and motivation`, base_price: 100, pic: scyscrapper, base_income: 2 },
+    { name: 'MINER PRO', description: `It's more powerful miner!`, base_price: 100, pic: minerPro, base_income: 2 },
 ];

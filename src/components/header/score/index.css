@@ -6,13 +6,13 @@
     background: black;
     border-top: none;
     padding-bottom: 4px;
-    box-shadow: 0 0 60px 30px rgb(255 255 0 / 10%);
+    box-shadow: 0 0 60px 30px rgb(165 25 255 / 10%);
     transition: border-color 500ms ease-in-out, box-shadow 1s ease-in-out;
 }
 
 .score-header-light {
-    box-shadow: 0 0 60px 30px rgb(255 255 0 / 37%);
-    border-color: gold;
+    box-shadow: 0 0 60px 30px rgb(165 25 255 / 65%);
+    border-color: #a519ff;
 }
 
 .score-header-points {
@@ -29,16 +29,4 @@
 
 .score-header-points > span {
     min-width: 100px;
-}
-
-@keyframes shadow {
-    0% {
-        box-shadow: -15px 15px 60px 30px rgb(255 255 0 / 10%);
-    }
-    50% {
-        box-shadow: 15px 15px 60px 30px rgb(255 255 0 / 10%);
-    }
-    100% {
-        box-shadow: -15px 15px 60px 30px rgb(255 255 0 / 10%);
-    }
 }

@@ -19,6 +19,7 @@ type Props = {
 }
 export const MainContainer: FC<Props> = observer(({ app }) => {
     const [points, setPoints] = useState<string[]>([]);
+    const el = document.querySelector('.main-container-bg');
     const { gameStore } = useStore();
     const navigate = useNavigate();
     const {
@@ -55,6 +56,8 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
             animatePoints();
         }
     });
+    const touchStart = () => el?.classList.add('clicked');
+    const touchEnd = () => el?.classList.remove('clicked');
 
     const openInvestmentsPopup = action(() => {
         navigate(`${DOMAIN}${PagesEnum.INVEST}`);
@@ -84,10 +87,12 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
             <div
                 className="main-container-bg"
                 style={{ backgroundImage: roomUpgrades.main }}
-                // onTouchStart={handleCoinClick}
-                onClick={handleCoinClick}
             >
-                <img src={roomUpgrades.main} />
+                <img src={roomUpgrades.main}
+                     onTouchStart={touchStart}
+                     onTouchEnd={touchEnd}
+                     onClick={handleCoinClick}
+                />
                 <div className="fake-scroll"></div>
                 {points.map((v) => (
                     <div key={v} className={`coin-wrapper anim${v[0]}`}>
@@ -98,11 +103,11 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
             <div>&#8593;tap on the man!&#8593;</div>
             <Task />
             <div className={'instruments'}>
-                <div id="store" onClick={openInvestmentsPopup}>
-                    <img src={store} alt="store" />
-                    <div>Investments</div>
-                </div>
-                <span className="devider"></span>
+                {/*<div id="store" onClick={openInvestmentsPopup}>*/}
+                {/*    <img src={store} alt="store" />*/}
+                {/*    <div>Investments</div>*/}
+                {/*</div>*/}
+                {/*<span className="devider"></span>*/}
                 <div id="upgrade" onClick={openUpgradesPopup}>
                     <img src={upgrade} alt="upgrade" />
                     <div>Upgrades</div>
