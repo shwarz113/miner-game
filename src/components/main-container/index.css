@@ -1,0 +1,162 @@
+.main-container {
+    position: relative;
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 78px);
+}
+.main-container-turbo-timer {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+}
+.main-container-turbo-timer span {
+    font-size: 20px;
+}
+.main-container-turbo-timer span::after {
+    content: 'sec';
+    font-size: 12px;
+}
+
+.main-container-bg {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 134px);
+    overflow: scroll;
+    touch-action: none;
+}
+.main-container-bg::-webkit-scrollbar {
+    display: none;
+    -webkit-appearance: none;
+    width: 0;
+    height: 0;
+}
+.main-container-bg img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.main-container-bg .coin-wrapper {
+    position: absolute;
+    cursor: pointer;
+    height: 30px;
+    background-image: url("../../sprite.png");
+    background-repeat: no-repeat;
+
+    width: 20px;
+    border-radius: 50%;
+    top: 35%;
+    left: 33%;
+}
+.main-container-bg .coin-wrapper.anim1 {
+    animation: sprite 1s steps(10) infinite, fadeOutUp 1.5s forwards, move1 1.5s forwards;
+}
+.main-container-bg .coin-wrapper.anim2 {
+    animation: sprite 1s steps(10) infinite, fadeOutUp 1.5s forwards, move2 1.5s forwards;
+}
+.main-container-bg .coin-wrapper.anim3 {
+    animation: sprite 1s steps(10) infinite, fadeOutUp 1.5s forwards, move3 1.5s forwards;
+}
+.main-container-bg .coin-wrapper div {
+    position: absolute;
+    font-size: 12px;
+    width: max-content;
+    left: -18px;
+    top: 5px;
+}
+
+.main-container-bg .fake-scroll {
+    top: 0;
+    height: calc(100% + 1px);
+    width: 1px;
+}
+
+.instruments {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 12px auto 24px;
+    width: 80%;
+    max-width: 380px;
+    min-width: 280px;
+}
+.instruments  > div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 10px;
+}
+.instruments  > div img {
+    width: 30px;
+    height: 30px;
+    max-width: 100%;
+}
+
+#lootbox {
+    justify-content: space-between;
+}
+#lootbox img {
+    width: 30px;
+    height: auto;
+    padding: 4px 0;
+}
+
+@keyframes sprite {
+    100% { background-position: -200px;}
+}
+@keyframes move1 {
+    25% {
+        left: 33%;
+    }
+    75% {
+        left: 26%;
+    }
+    100% {
+        top: 1%;
+        left: 30%;
+    }
+}
+@keyframes move2 {
+    25% {
+        left: 26%;
+    }
+    75% {
+        left: 33%;
+    }
+    100% {
+        top: 1%;
+        left: 30%;
+    }
+}
+@keyframes move3 {
+    45% {
+        left: 26%;
+    }
+    85% {
+        left: 33%;
+    }
+    100% {
+        top: 1%;
+        left: 30%;
+    }
+}
+@keyframes fadeOutUp {
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
