@@ -1,8 +1,7 @@
 body {
     margin: 0;
     font-family:
-        'Silkscreen',
-        'Pixelify Sans',
+        Inter,
         -apple-system,
         BlinkMacSystemFont,
         'Segoe UI',
@@ -17,6 +16,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
+    background: #0D1533;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
 }
 
 code {

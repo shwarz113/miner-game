@@ -1,18 +1,14 @@
 import React, {FC, useCallback, useRef, useState} from 'react';
 import AnimatedNumber from 'animated-number-react';
 import { action } from 'mobx';
-import store from './store.png';
-import upgrade from './upgrade.png';
-import people from './people.png';
-import box from './box.png';
 import { useStore } from '../../store/store';
 import { TURBO_TIME } from '../../store/constants';
 import { observer } from 'mobx-react-lite';
 import {useNavigate} from "react-router-dom";
-import {Task} from "./task";
-import {DOMAIN, PagesEnum} from "../../constants";
 import './index.css';
-import {MobXAppStore} from "../../store/MobXStore";
+import app, {MobXAppStore} from "../../store/MobXStore";
+import {Header} from "../header";
+import BalanceTapsPic from "./balance-taps.png";
 
 type Props = {
     app: MobXAppStore;
@@ -59,34 +55,13 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
     const touchStart = () => el?.classList.add('clicked');
     const touchEnd = () => el?.classList.remove('clicked');
 
-    const openInvestmentsPopup = action(() => {
-        navigate(`${DOMAIN}${PagesEnum.INVEST}`);
-    });
-
-    const openUpgradesPopup = action(() => {
-        navigate(`${DOMAIN}${PagesEnum.UPGRADES}`);
-    });
-
-    const openPeoplePage = () => {
-        navigate(`${DOMAIN}${PagesEnum.PEOPLE}`);
-    };
-    const openLootboxPage = () => {
-        navigate(`${DOMAIN}${PagesEnum.LOOT}`);
-    };
-
     const formatTimerValue = (v: number) => ((TURBO_TIME - v) / 1000).toFixed(2);
 
     return (
         <div className={'main-container'}>
-            {isTurboTapMode ? (
-                <div className="main-container-turbo-timer">
-                    <div>CLICK! X5 PROFIT!</div>
-                    <AnimatedNumber value={TURBO_TIME} formatValue={formatTimerValue} duration={TURBO_TIME} />
-                </div>
-            ) : null}
             <div
                 className="main-container-bg"
-                style={{ backgroundImage: roomUpgrades.main }}
+                style={{backgroundImage: roomUpgrades.main}}
             >
                 <img src={roomUpgrades.main}
                      onTouchStart={touchStart}
@@ -100,28 +75,9 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
                     </div>
                 ))}
             </div>
-            <div>&#8593;tap on the man!&#8593;</div>
-            <Task />
-            <div className={'instruments'}>
-                {/*<div id="store" onClick={openInvestmentsPopup}>*/}
-                {/*    <img src={store} alt="store" />*/}
-                {/*    <div>Investments</div>*/}
-                {/*</div>*/}
-                {/*<span className="devider"></span>*/}
-                <div id="upgrade" onClick={openUpgradesPopup}>
-                    <img src={upgrade} alt="upgrade" />
-                    <div>Upgrades</div>
-                </div>
-                <span className="devider"></span>
-                <div id="lootbox" onClick={openLootboxPage}>
-                    <img src={box} alt="box" />
-                    <div>Lootbox</div>
-                </div>
-                <span className="devider"></span>
-                <div id="people" onClick={openPeoplePage}>
-                    <img src={people} alt="people" />
-                    <div>People</div>
-                </div>
+            <div className="balanceTaps">
+                <div className="balanceTapsPic"><img src={BalanceTapsPic} alt=""/></div>
+                <div>240/1000</div>
             </div>
         </div>
     );

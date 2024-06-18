@@ -27,7 +27,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: calc(100% - 134px);
+    height: calc(100% - 200px);
     overflow: scroll;
     touch-action: none;
 }
@@ -81,41 +81,50 @@
     max-width: 80%;
 }
 
-.instruments {
+.balanceTaps {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 16px;
+    background: rgba(160, 174, 255, 0.16);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.balanceTapsPic {
+    margin-right: 8px;
+}
+
+.navbar {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    border-radius: 16px;
+    background: rgba(47, 58, 101, 0.88);
+    backdrop-filter: blur(4px);
     padding: 8px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.15);
-    margin: 12px auto 24px;
-    width: 80%;
-    max-width: 380px;
-    min-width: 280px;
+    gap: 16px;
 }
-.instruments  > div {
-    position: relative;
+.navbarItem {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    padding: 8px 0;
+    border-radius: 10px;
+    gap: 4px;
+    min-width: 56px;
+    width: 100%;
 }
-.instruments  > div img {
-    width: 30px;
-    height: 30px;
-    max-width: 100%;
-}
-
-#lootbox {
-    justify-content: space-between;
-}
-#lootbox img {
-    width: 30px;
-    height: auto;
-    padding: 4px 0;
+.navbarItem.active {
+    background: rgba(160, 174, 255, 0.16);
+    color: #A0AEFF;
 }
 
 @keyframes sprite {

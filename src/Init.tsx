@@ -2,13 +2,13 @@ import { DOMAIN } from './constants';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { memo, useEffect } from 'react';
 // @ts-ignore
-const tg = window.Telegram.WebApp;
+const tg = window.Telegram?.WebApp;
 export const Init = memo(() => {
     const { pathname } = useLocation();
     const navigate = useNavigate();
     console.log('tg', tg);
-    const BackButton = tg.BackButton;
-    BackButton.onClick(function () {
+    const BackButton = tg?.BackButton;
+    BackButton?.onClick(function () {
         navigate(DOMAIN);
     });
 
@@ -26,9 +26,9 @@ export const Init = memo(() => {
 
     useEffect(() => {
         if (pathname === DOMAIN) {
-            BackButton.hide();
+            BackButton?.hide();
         } else {
-            BackButton.show();
+            BackButton?.show();
         }
     }, [pathname]);
 

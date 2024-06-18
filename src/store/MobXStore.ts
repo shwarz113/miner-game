@@ -16,19 +16,19 @@ class MobXApp {
 
     constructor() {
         // @ts-ignore
-        this.userName = window.Telegram.WebApp?.initDataUnsafe?.user?.username || 'Это тест';
+        this.userName = window.Telegram?.WebApp?.initDataUnsafe?.user?.username || 'Это тест';
         makeAutoObservable(this);
         console.log('mobx');
-        this.client = new Client({
-            brokerURL: SOCKET_URL,
-            onConnect: () => {
-                this.client?.subscribe('/user/topic/user', (message) => this.setUserInfo(message.body));
-                this.client?.subscribe('/user/topic/errors', (message) => alert(message.body));
-                this.client?.subscribe('/user/topic/balance', (message) => this.balanceWatcher(message.body));
-                this.client?.subscribe('/user/topic/invest', (message) => this.investWatcher(message.body));
-                this.client?.publish({ destination: '/ws/user', body: this.userName });
-            },
-        });
+        // this.client = new Client({
+        //     brokerURL: SOCKET_URL,
+        //     onConnect: () => {
+        //         this.client?.subscribe('/user/topic/user', (message) => this.setUserInfo(message.body));
+        //         this.client?.subscribe('/user/topic/errors', (message) => alert(message.body));
+        //         this.client?.subscribe('/user/topic/balance', (message) => this.balanceWatcher(message.body));
+        //         this.client?.subscribe('/user/topic/invest', (message) => this.investWatcher(message.body));
+        //         this.client?.publish({ destination: '/ws/user', body: this.userName });
+        //     },
+        // });
         this.client?.activate();
         this.enablePassiveIncreaseBalance();
     }

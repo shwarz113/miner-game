@@ -4,19 +4,25 @@ import { useStore } from '../../store/store';
 import { ScoreHeader } from './score';
 import { Accum } from './accum';
 import './index.css';
-import { action } from 'mobx';
 import {MobXAppStore} from "../../store/MobXStore";
+import Coin from './coin-header.svg'
+import Avatar from './avatar.png'
 
 type Props = {
     app: MobXAppStore;
+    isMainPage: boolean;
 }
-export const Header: FC<Props> = observer(({ app }) => {
-    const { gameStore } = useStore();
-    const { isTap } = gameStore;
+export const Header: FC<Props> = observer(({ app, isMainPage }) => {
     return (
-        <div className="header">
-            <ScoreHeader points={app.balance} pointsPerSecond={app.income} isTap={isTap} />
-            <Accum accum={app.battery} accumCapacity={app.commonInfo?.battery.capacity || 0} />
+        <div className={`header ${isMainPage ? '' : 'headerMinimal'}`}>
+            <div className="headerItem">
+                <div className="headerItemAvatar"><img src={Avatar} alt=":)"/></div>
+                <div>Axel Tuogo</div>
+            </div>
+            <div className="headerItem">
+                <div>152 350</div>
+                <div className="headerItemPic"><img src={Coin} alt="O"/></div>
+            </div>
         </div>
     );
 });
