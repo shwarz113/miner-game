@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx';
 import { Investments } from '../components/main-container/types';
 import { ACCUM, ACCUM_LIMIT_REFRESH_AMOUNT, DEFAULT_INC_TAP_VALUE, instrumentsLevelsMock } from './constants';
 import { instrumentsMock } from '../components/main-container/constants';
-import bg from '../components/main-container/miner.png';
+import bg from '../assets/images/miner.png';
 
 export enum PopupsEnum {
     'INVESTMENTS' = 'INVESTMENTS',

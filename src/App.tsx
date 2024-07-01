@@ -12,11 +12,11 @@ import { Init } from './Init';
 import app from './store/MobXStore';
 import { Loader } from './components/loader';
 import { observer } from 'mobx-react-lite';
-import CityPic from './components/main-container/city.png';
-import LeadersPic from './components/main-container/leaders.png';
-import MinerNavbarPic from './components/main-container/miner-navbar.png';
-import IncomePic from './components/main-container/income.png';
-import BoostPic from './components/main-container/boost.png';
+import CityPic from './assets/images/city.png';
+import LeadersPic from './assets/images/leaders.png';
+import MinerNavbarPic from './assets/images/miner-navbar.png';
+import IncomePic from './assets/images/income.png';
+import BoostPic from './assets/images/boost.png';
 import { LeadersContainer } from './components/leaders';
 
 function App() {

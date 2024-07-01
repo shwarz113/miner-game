@@ -1,6 +1,6 @@
 import { Investments } from './types';
-import tap from './tap.png';
-import minerPro from './miner2.png';
+import tap from '../../assets/images/tap.png';
+import minerPro from '../../assets/images/miner2.png';
 import thunder from '../../thunder.png';
 
 export const PRICE_MULTIPLIER = 1.2;

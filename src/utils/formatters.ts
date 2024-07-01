@@ -24,3 +24,7 @@ export const nFormatter = ({ num, precision = 1 }: NFormatter) => {
     }
     return item ? `${toFixed(num / item.value, precision)}`.concat(item.symbol) : toFixed(num, precision);
 };
+
+export function numberWithSeparationThousands(x: number) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}

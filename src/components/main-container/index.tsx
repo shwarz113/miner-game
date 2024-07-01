@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 import './index.css';
 import app, {MobXAppStore} from "../../store/MobXStore";
 import {Header} from "../header";
-import BalanceTapsPic from "./balance-taps.png";
+import BalanceTapsPic from "../../assets/images/balance-taps.png";
 
 type Props = {
     app: MobXAppStore;

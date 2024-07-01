@@ -8,7 +8,7 @@ import {useStore} from "../../store/store";
 import {action} from "mobx";
 import {upgradesMock, upgradesRoomMock} from "../main-container/constants";
 import {ACCUM, ACCUM_MULTIPLIER, DEFAULT_INC_TAP_VALUE, TURBO_MULTIPLIER_TAP, TURBO_TIME} from "../../store/constants";
-import bg2 from "../main-container/miner2.png";
+import bg2 from "../../assets/images/miner2.png";
 import styles from './index.module.css';
 import rocket from '../../rocket.png';
 import thunder from '../../thunder.png';

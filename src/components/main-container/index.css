@@ -1,9 +1,9 @@
 .main-container {
-    position: relative;
-    flex: auto;
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 78px);
+    max-height: calc(100vh - 154px);
+    min-height: calc(100vh - 154px);
+    overflow-y: auto;
+    margin-bottom: 8px;
+    padding: 0 8px;
 }
 .main-container-turbo-timer {
     position: absolute;

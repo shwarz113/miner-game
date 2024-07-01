@@ -1,7 +1,9 @@
 .incomeWrapper {
-    max-height: calc(100vh - 50px);
+    max-height: calc(100vh - 154px);
+    min-height: calc(100vh - 154px);
     overflow-y: auto;
     margin-bottom: 8px;
+    padding: 0 8px;
 }
 .incomeHeaderItem {
     display: flex;
@@ -105,10 +107,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 8px;
     padding: 8px 12px;
-    border-radius: 8px;
-    background: rgba(160, 174, 255, 0.16);
+    border-bottom: 1px solid rgba(160, 174, 255, 0.16);
+}
+.incomeCityItem:last-of-type {
+    border: none;
 }
 .incomeCityItem div:first-of-type {
     display: flex;
@@ -120,5 +123,19 @@
     font-weight: 700;
 }
 .incomeCityDivider {
-    margin-top: 24px;
+    margin-top: 16px;
+}
+
+.emptyBlock div:first-of-type {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+}
+.emptyBlock div:last-of-type {
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    color: rgba(255, 255, 255, 0.60);
 }
