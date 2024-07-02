@@ -1,12 +1,10 @@
 import { observer } from 'mobx-react-lite';
 import React, {FC, useEffect} from 'react';
-import { useStore } from '../../store/store';
-import { ScoreHeader } from './score';
-import { Accum } from './accum';
+// import { useStore } from '../../store/store';
 import './index.css';
 import {MobXAppStore} from "../../store/MobXStore";
-import Coin from './coin-header.svg'
-import Avatar from './avatar.png'
+import Coin from '../../assets/svg/coin-header.svg'
+import Avatar from '../../assets/images/avatar.png'
 
 type Props = {
     app: MobXAppStore;

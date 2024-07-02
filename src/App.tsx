@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { MainContainer } from './components/main-container';
+import { MainContainer } from './pages/main-container';
 import { Header } from './components/header';
-import { IncomeContainer } from './components/income';
-import { LootboxContainer } from './components/lootbox';
+import { IncomeContainer } from './pages/income';
 import { DOMAIN, PagesEnum } from './constants';
-import { instrumentsMock, upgradesMock, upgradesRoomMock } from './components/main-container/constants';
-import { Upgrades } from './components/upgrade';
 import './App.css';
 import { Init } from './Init';
 import app from './store/MobXStore';
@@ -17,7 +14,8 @@ import LeadersPic from './assets/images/leaders.png';
 import MinerNavbarPic from './assets/images/miner-navbar.png';
 import IncomePic from './assets/images/income.png';
 import BoostPic from './assets/images/boost.png';
-import { LeadersContainer } from './components/leaders';
+import { LeadersContainer } from './pages/leaders';
+import {BoostContainer} from "./pages/boost";
 
 function App() {
     console.log('app', app);
@@ -55,7 +53,7 @@ function App() {
                 <Route path={DOMAIN} element={<MainContainer app={app} />} />
                 <Route path={`${DOMAIN}${PagesEnum.Income}`} element={<IncomeContainer />} />
                 <Route path={`${DOMAIN}${PagesEnum.Leaders}`} element={<LeadersContainer />} />
-                <Route path={`${DOMAIN}${PagesEnum.Boost}`} element={<LeadersContainer />} />
+                <Route path={`${DOMAIN}${PagesEnum.Boost}`} element={<BoostContainer />} />
                 <Route path={`${DOMAIN}${PagesEnum.City}`} element={<IncomeContainer />} />
             </Routes>
             <div className={'navbar'}>

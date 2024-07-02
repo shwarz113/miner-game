@@ -1,0 +1,10 @@
+.minerWrapper {
+    position: relative;
+}
+.minerWrapperPic, .minerPic {
+    max-width: 100%;
+}
+.miner {
+    position: absolute;
+    top: 0;
+}

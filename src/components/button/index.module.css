@@ -1,0 +1,30 @@
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 8px;
+    background: #FFBE17;
+    color: #0D1533;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.s {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 4px;
+    border-radius: 40px;
+    width: 100%;
+}
+
+.disabled {
+    background: rgba(47, 58, 101, 0.88);
+    color: rgba(255, 255, 255, 0.16);
+    cursor: not-allowed;
+}

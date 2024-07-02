@@ -1,0 +1,72 @@
+.boostWrapper {
+    max-height: calc(100vh - 154px);
+    min-height: calc(100vh - 154px);
+    overflow-y: auto;
+    margin-bottom: 8px;
+    padding: 0 8px;
+}
+
+.block {
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1 0 0;
+    border-radius: 16px;
+    border: 2px solid #A0AEFF;
+    background: rgba(160, 174, 255, 0.16);
+}
+
+.blockWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.minerTop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+}
+.minerTopLeft, .minerTopRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.minerTopLeft {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+}
+.minerTopRight {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+.minerTopRight span {
+    font-weight: 700;
+}
+.minerTopRight img {
+    width: 20px;
+    height: 20px;
+}
+
+.miner {
+    padding: 0 24px;
+}
