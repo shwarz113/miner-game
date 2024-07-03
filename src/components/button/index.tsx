@@ -8,11 +8,13 @@ type Props = {
     onClick: () => void;
     size?: 's' | 'm';
     disabled?: boolean;
+    type?: 'default' | 'text';
+    className?: string;
 };
-export const Button: FC<Props> = ({ icon, children, size = 'm', onClick, disabled }) => {
+export const Button: FC<Props> = ({ icon, children, size = 'm', onClick, disabled, type = 'default', className }) => {
     return (
         <div
-            className={classNames(styles.button, styles[size], disabled && styles.disabled)}
+            className={classNames(styles.button, styles[size], styles[type], disabled && styles.disabled, className)}
             onClick={disabled ? undefined : onClick}
         >
             <div>{children}</div>

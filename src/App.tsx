@@ -16,6 +16,7 @@ import IncomePic from './assets/images/income.png';
 import BoostPic from './assets/images/boost.png';
 import { LeadersContainer } from './pages/leaders';
 import {BoostContainer} from "./pages/boost";
+import {TownContainer} from "./pages/town";
 
 function App() {
     console.log('app', app);
@@ -54,7 +55,7 @@ function App() {
                 <Route path={`${DOMAIN}${PagesEnum.Income}`} element={<IncomeContainer />} />
                 <Route path={`${DOMAIN}${PagesEnum.Leaders}`} element={<LeadersContainer />} />
                 <Route path={`${DOMAIN}${PagesEnum.Boost}`} element={<BoostContainer />} />
-                <Route path={`${DOMAIN}${PagesEnum.City}`} element={<IncomeContainer />} />
+                <Route path={`${DOMAIN}${PagesEnum.City}`} element={<TownContainer />} />
             </Routes>
             <div className={'navbar'}>
                 <div

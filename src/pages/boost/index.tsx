@@ -10,6 +10,7 @@ import styles from './index.module.css';
 import { userMock } from './constants';
 import { Button } from '../../components/button';
 import {MinerBlock} from "../../components/miner-block";
+import {AssetItemWrapper} from "../../components/asset-item-wrapper";
 
 export const BoostContainer = () => {
     const data = {
@@ -18,22 +19,18 @@ export const BoostContainer = () => {
     return (
         <div className={styles.boostWrapper}>
             <div className={styles.row}>
-                <div className={styles.block}>
-                    <img src={EnergyPic} alt="" />
-                    <div className={styles.blockTitle}>Энергия</div>
-                    <div className={styles.blockCount}>{data.statistic.boost} / 3</div>
-                    <Button onClick={() => {}} size={'s'}>
-                        Получить
-                    </Button>
-                </div>
-                <div className={styles.block}>
-                    <img src={RocketPic} alt="" />
-                    <div className={styles.blockTitle}>Турбобуст</div>
-                    <div className={styles.blockCount}>{data.statistic.turbo_boost} / 3</div>
-                    <Button onClick={() => {}} size={'s'} disabled>
-                        Получить
-                    </Button>
-                </div>
+                <AssetItemWrapper
+                    img={EnergyPic}
+                    middle={{text: `${data.statistic.boost} / 3` }}
+                    title={'Энергия'}
+                    button={(<Button onClick={() => {}} size={'s'}>Получить</Button>)}
+                />
+                <AssetItemWrapper
+                    img={RocketPic}
+                    middle={{text: `${data.statistic.turbo_boost} / 3` }}
+                    title={'Турбобуст'}
+                    button={(<Button onClick={() => {}} size={'s'} disabled>Получить</Button>)}
+                />
             </div>
             <BlockWrapper className={styles.blockWrapper}>
                 <div className={styles.minerTop}>

@@ -1,0 +1,60 @@
+.block {
+    position: relative;
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1 0 0;
+    border-radius: 16px;
+    border: 2px solid #A0AEFF;
+    background: rgba(160, 174, 255, 0.16);
+}
+
+.title {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.content {
+    border-radius: 40px;
+    background: rgba(160, 174, 255, 0.16);
+    width: 100%;
+    font-weight: 700;
+    padding: 4px;
+}
+
+.check {
+    display: none;
+    padding: 8px;
+    border-radius: 50%;
+    background: #17C467;
+}
+
+.primary {
+    border: 2px solid #17C467;
+    background: rgba(23, 196, 103, 0.16);
+}
+
+.primary .content {
+    background: rgba(23, 196, 103, 0.16);
+    color: #17C467;
+}
+
+.primary .check {
+    display: block;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+}
+
+.ghost {
+    border: 1px solid rgba(160, 174, 255, 0.16);
+    color: rgba(255, 255, 255, 0.16);
+}
+
+.ghost img {
+    opacity: 0.4;
+}
