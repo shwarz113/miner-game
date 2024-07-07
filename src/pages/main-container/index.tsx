@@ -1,17 +1,18 @@
-import React, {FC, useCallback, useRef, useState} from 'react';
+import React, { FC, useCallback, useRef, useState } from 'react';
 import AnimatedNumber from 'animated-number-react';
 import { action } from 'mobx';
 // import { useStore } from '../../store/store';
 // import { TURBO_TIME } from '../../store/constants';
 import { observer } from 'mobx-react-lite';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import './index.css';
-import app, {MobXAppStore} from "../../store/MobXStore";
-import BalanceTapsPic from "../../assets/images/balance-taps.png";
+import app, { MobXAppStore } from '../../store/MobXStore';
+import BalanceTapsPic from '../../assets/images/balance-taps.png';
+import {MinerBlock} from "../../components/miner-block";
 
 type Props = {
     app: MobXAppStore;
-}
+};
 export const MainContainer: FC<Props> = observer(({ app }) => {
     const [points, setPoints] = useState<string[]>([]);
     const el = document.querySelector('.main-container-bg');
@@ -37,18 +38,25 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
     }
     const animatePoints = useCallback(() => {
         const key = Math.floor(Math.random() * 3) + 1 + Math.random().toFixed(6);
-        const p = points.length > 30 ? [...points.slice(25), key]: [...points, key];
+        const p = points.length > 30 ? [...points.slice(25), key] : [...points, key];
         setPoints(p);
-    }, [points.length])
+    }, [points.length]);
 
-    const handleCoinClick = action((e: any) => {
-        if (app.battery) {
-            // gameStore.isTap = true;
-            app.handleTap();
-            handleDebounceClick();
-            animatePoints();
-        }
-    });
+    const handleCoinClick = () => {
+        handleDebounceClick();
+        animatePoints();
+    }
+
+    // const handleCoinClick = action((e: any) => {
+    //     handleDebounceClick();
+    //     animatePoints();
+    //     if (app.battery) {
+    //         gameStore.isTap = true;
+    //         app.handleTap();
+    //         handleDebounceClick();
+    //         animatePoints();
+    //     }
+    // });
     const touchStart = () => el?.classList.add('clicked');
     const touchEnd = () => el?.classList.remove('clicked');
 
@@ -56,10 +64,7 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
 
     return (
         <div className={'main-container'}>
-            <div
-                className="main-container-bg"
-                // style={{backgroundImage: roomUpgrades.main}}
-            >
+            <div className="main-container-bg">
                 {/*<img src={roomUpgrades.main}*/}
                 {/*     onTouchStart={touchStart}*/}
                 {/*     onTouchEnd={touchEnd}*/}
@@ -67,13 +72,14 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
                 {/*/>*/}
                 <div className="fake-scroll"></div>
                 {points.map((v) => (
-                    <div key={v} className={`coin-wrapper anim${v[0]}`}>
-                        <div>+{app.commonInfo?.coinPerTap.currentValue || 1}</div>
-                    </div>
+                    <div key={v} className={`coin-wrapper anim${v[0]}`}/>
                 ))}
+                <MinerBlock level={1} onClick={handleCoinClick} disabled={true} />
             </div>
             <div className="balanceTaps">
-                <div className="balanceTapsPic"><img src={BalanceTapsPic} alt=""/></div>
+                <div className="balanceTapsPic">
+                    <img src={BalanceTapsPic} alt="" />
+                </div>
                 <div>240/1000</div>
             </div>
         </div>

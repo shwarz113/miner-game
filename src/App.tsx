@@ -17,26 +17,12 @@ import BoostPic from './assets/images/boost.png';
 import { LeadersContainer } from './pages/leaders';
 import {BoostContainer} from "./pages/boost";
 import {TownContainer} from "./pages/town";
+import {Navbar} from "./components/navbar";
 
 function App() {
     console.log('app', app);
     const navigate = useNavigate();
     const { pathname } = useLocation();
-    const goToIncome = () => {
-        navigate(`${DOMAIN}${PagesEnum.Income}`);
-    };
-    const goToMain = () => {
-        navigate(DOMAIN);
-    };
-    const goToCity = () => {
-        navigate(`${DOMAIN}${PagesEnum.City}`);
-    };
-    const goToLeaders = () => {
-        navigate(`${DOMAIN}${PagesEnum.Leaders}`);
-    };
-    const goToBoost = () => {
-        navigate(`${DOMAIN}${PagesEnum.Boost}`);
-    };
 
     // if (app.isLoading) {
     //     return (
@@ -57,40 +43,7 @@ function App() {
                 <Route path={`${DOMAIN}${PagesEnum.Boost}`} element={<BoostContainer />} />
                 <Route path={`${DOMAIN}${PagesEnum.City}`} element={<TownContainer />} />
             </Routes>
-            <div className={'navbar'}>
-                <div
-                    className={`navbarItem ${pathname === `${DOMAIN}${PagesEnum.City}` ? 'active' : ''}`}
-                    onClick={goToCity}
-                >
-                    <img src={CityPic} alt="Город" />
-                    <div>Город</div>
-                </div>
-                <div
-                    className={`navbarItem ${pathname === `${DOMAIN}${PagesEnum.Leaders}` ? 'active' : ''}`}
-                    onClick={goToLeaders}
-                >
-                    <img src={LeadersPic} alt="Лидеры" />
-                    <div>Лидеры</div>
-                </div>
-                <div className={`navbarItem ${pathname === DOMAIN ? 'active' : ''}`} onClick={goToMain}>
-                    <img src={MinerNavbarPic} alt="Майнер" />
-                    <div>Майнер</div>
-                </div>
-                <div
-                    className={`navbarItem ${pathname === `${DOMAIN}${PagesEnum.Income}` ? 'active' : ''}`}
-                    onClick={goToIncome}
-                >
-                    <img src={IncomePic} alt="Доход" />
-                    <div>Доход</div>
-                </div>
-                <div
-                    className={`navbarItem ${pathname === `${DOMAIN}${PagesEnum.Boost}` ? 'active' : ''}`}
-                    onClick={goToBoost}
-                >
-                    <img src={BoostPic} alt="Буст" />
-                    <div>Буст</div>
-                </div>
-            </div>
+            <Navbar />
         </div>
     );
 }

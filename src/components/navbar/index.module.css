@@ -1,0 +1,30 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 16px;
+    background: rgba(47, 58, 101, 0.88);
+    backdrop-filter: blur(4px);
+    padding: 8px;
+    gap: 16px;
+}
+.navbarItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    padding: 8px 0;
+    border-radius: 10px;
+    gap: 4px;
+    min-width: 56px;
+    width: 100%;
+}
+.navbarItem.active {
+    background: rgba(160, 174, 255, 0.16);
+    color: #A0AEFF;
+}

@@ -1,6 +1,15 @@
 .minerWrapper {
     position: relative;
 }
+
+.minerWrapper.disabled .minerWrapperPic {
+    filter: blur(2px);
+    opacity: .4;
+}
+
+.minerWrapper.disabled .miner {
+    filter: blur(1px);
+}
 .minerWrapperPic, .minerPic {
     max-width: 100%;
 }

@@ -14,11 +14,11 @@ export const TownContainer = () => {
     const refObjects = useRef(null);
 
     // @ts-ignore
-    const scrollToCars = () => refCars?.current?.scrollIntoView({ behavior: "smooth", block: "100px", inline: "nearest" });
+    const scrollToCars = () => refCars?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
     // @ts-ignore
-    const scrollToHotels = () => refHotels?.current?.scrollIntoView({ behavior: "smooth", block: "100px", inline: "nearest" });
+    const scrollToHotels = () => refHotels?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
     // @ts-ignore
-    const scrollToObjects = () => refObjects?.current?.scrollIntoView({ behavior: "smooth", block: "100px", inline: "nearest" });
+    const scrollToObjects = () => refObjects?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 
     // todo переписать в сторе
     const paidAmount: Record<ObjectItemType, number> = {
