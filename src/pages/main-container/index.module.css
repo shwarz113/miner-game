@@ -1,11 +1,14 @@
-.main-container {
+.mainContainer {
     max-height: calc(100vh - 154px);
     min-height: calc(100vh - 154px);
     overflow-y: auto;
     margin-bottom: 8px;
     padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
 }
-.main-container-turbo-timer {
+.mainContainer-turbo-timer {
     position: absolute;
     z-index: 1;
     top: 0;
@@ -13,26 +16,26 @@
     transform: translateX(-50%);
     font-size: 12px;
 }
-.main-container-turbo-timer span {
+.mainContainer-turbo-timer span {
     font-size: 20px;
 }
-.main-container-turbo-timer span::after {
+.mainContainer-turbo-timer span::after {
     content: 'sec';
     font-size: 12px;
 }
 
-.main-container-bg::-webkit-scrollbar {
+.mainContainerBg::-webkit-scrollbar {
     display: none;
     -webkit-appearance: none;
     width: 0;
     height: 0;
 }
-.main-container-bg img {
+.mainContainerBg img {
     max-width: 90%;
     max-height: 100%;
     transition: width 300ms;
 }
-.main-container-bg .coin-wrapper {
+.mainContainerBg .coinWrapper {
     position: absolute;
     cursor: pointer;
     height: 120px;
@@ -45,29 +48,40 @@
     left: 33%;
     z-index: 1;
 }
-.main-container-bg .coin-wrapper.anim1 {
+.mainContainerBg .coinWrapper.anim1 {
     animation:
     spin 1s infinite,
         move1 1.5s infinite,
         fadeOutUp 1.5s forwards;
 }
-.main-container-bg .coin-wrapper.anim2 {
+.mainContainerBg .coinWrapper.anim2 {
     animation:
     spin 1s infinite,
         move2 1.5s infinite,
         fadeOutUp 1.5s forwards;
 }
-.main-container-bg .coin-wrapper.anim3 {
+.mainContainerBg .coinWrapper.anim3 {
     animation:
     spin 1s infinite,
         move3 1.5s infinite,
         fadeOutUp 1.5s forwards;
 }
 
-.main-container-bg .fake-scroll {
+.mainContainerBg .fake-scroll {
     top: 0;
     height: calc(100% + 1px);
     width: 1px;
+}
+
+.balanceTaps {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 16px;
+    background: rgba(160, 174, 255, 0.16);
+    padding: 8px 12px;
+    font-weight: 700;
+    width: fit-content;
 }
 
 @keyframes spin {

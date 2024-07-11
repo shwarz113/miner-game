@@ -1,14 +1,15 @@
 import React, { FC, useCallback, useRef, useState } from 'react';
-import AnimatedNumber from 'animated-number-react';
+// import AnimatedNumber from 'animated-number-react';
 import { action } from 'mobx';
 // import { useStore } from '../../store/store';
 // import { TURBO_TIME } from '../../store/constants';
 import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router-dom';
-import './index.css';
 import app, { MobXAppStore } from '../../store/MobXStore';
 import BalanceTapsPic from '../../assets/images/balance-taps.png';
 import {MinerBlock} from "../../components/miner-block";
+import styles from './index.module.css';
+import classNames from "classnames";
 
 type Props = {
     app: MobXAppStore;
@@ -63,23 +64,16 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
     // const formatTimerValue = (v: number) => ((TURBO_TIME - v) / 1000).toFixed(2);
 
     return (
-        <div className={'main-container'}>
-            <div className="main-container-bg">
-                {/*<img src={roomUpgrades.main}*/}
-                {/*     onTouchStart={touchStart}*/}
-                {/*     onTouchEnd={touchEnd}*/}
-                {/*     onClick={handleCoinClick}*/}
-                {/*/>*/}
+        <div className={styles.mainContainer}>
+            <div className={styles.mainContainerBg}>
                 <div className="fake-scroll"></div>
                 {points.map((v) => (
-                    <div key={v} className={`coin-wrapper anim${v[0]}`}/>
+                    <div key={v} className={classNames(styles.coinWrapper, styles[`anim${v[0]}`])}/>
                 ))}
                 <MinerBlock level={1} onClick={handleCoinClick} disabled={true} />
             </div>
-            <div className="balanceTaps">
-                <div className="balanceTapsPic">
-                    <img src={BalanceTapsPic} alt="" />
-                </div>
+            <div className={styles.balanceTaps}>
+                <img src={BalanceTapsPic} alt=""/>
                 <div>240/1000</div>
             </div>
         </div>

@@ -19,7 +19,7 @@ export const AssetItemWrapper = ({ img, title, middle, className, button, status
     return (
         <div className={classNames(styles.block, styles[status], className)}>
             <img className={styles.check} src={CheckSvg} alt=""/>
-            <img src={img} alt="" />
+            <img className={styles.objectImg} src={img} alt="" />
             <div className={styles.title}>{title}</div>
             {middle.text ? (
                 <div className={styles.text}>{middle.text}</div>

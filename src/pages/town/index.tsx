@@ -2,7 +2,14 @@ import React, { useRef } from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
 import { BlockWrapper } from '../../components/block-wrapper';
 import styles from './index.module.css';
-import { ObjectItemStatus, ObjectItemType, objectsByType, objectsImgByType, objectsNameByType } from './constants';
+import {
+    imagesByObjectId,
+    ObjectItemStatus,
+    ObjectItemType,
+    objectsByType,
+    objectsImgByType,
+    objectsNameByType
+} from './constants';
 import { Button } from '../../components/button';
 import { AssetItemWrapper } from '../../components/asset-item-wrapper';
 import { nFormatter, numberWithSeparationThousands } from '../../utils/formatters';
@@ -61,9 +68,9 @@ export const TownContainer = () => {
                             </div>
                         </div>
                         <div className={styles.items}>
-                            {items.map(({ name, daily_income, price, status }) => (
+                            {items.map(({ name, daily_income, price, status, id_object }) => (
                                 <AssetItemWrapper
-                                    img={objectsImgByType[key as ObjectItemType]}
+                                    img={imagesByObjectId[id_object]}
                                     middle={{ content: `+${nFormatter({ num: daily_income })} / день` }}
                                     title={name}
                                     button={
