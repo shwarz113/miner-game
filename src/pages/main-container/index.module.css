@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
+    user-select: none;
 }
 .mainContainer-turbo-timer {
     position: absolute;
@@ -44,27 +45,17 @@
 
     width: 120px;
     border-radius: 50%;
-    top: 35%;
-    left: 33%;
+    bottom: 180px;
     z-index: 1;
 }
 .mainContainerBg .coinWrapper.anim1 {
-    animation:
-    spin 1s infinite,
-        move1 1.5s infinite,
-        fadeOutUp 1.5s forwards;
+    animation: anim1 1s ease-in 0s 1 reverse forwards;
 }
 .mainContainerBg .coinWrapper.anim2 {
-    animation:
-    spin 1s infinite,
-        move2 1.5s infinite,
-        fadeOutUp 1.5s forwards;
+    animation: anim2 1s ease-in 0s 1 reverse forwards;
 }
 .mainContainerBg .coinWrapper.anim3 {
-    animation:
-    spin 1s infinite,
-        move3 1.5s infinite,
-        fadeOutUp 1.5s forwards;
+    animation: anim3 1s ease-in 0s 1 reverse forwards;
 }
 
 .mainContainerBg .fake-scroll {
@@ -84,58 +75,44 @@
     width: fit-content;
 }
 
-@keyframes spin {
+@keyframes anim1 {
+    0% {
+        opacity: 0;
+        transform: translateY(-250px) scale(.5);
+        right: 30px;
+    }
+
     100% {
-        transform: rotate(30deg);
+        opacity: 1;
+        transform: translateY(0) rotate(-60deg);
+        right: 30px;
     }
 }
 
-@keyframes sprite {
-    100% {
-        background-position: 0;
-    }
-}
-@keyframes move1 {
-    25% {
-        left: 33%;
-    }
-    75% {
-        left: 26%;
-    }
-    100% {
-        top: 1%;
-        left: 30%;
-    }
-}
-@keyframes move2 {
-    25% {
-        left: 26%;
-    }
-    75% {
-        left: 33%;
-    }
-    100% {
-        top: 1%;
-        left: 30%;
-    }
-}
-@keyframes move3 {
-    45% {
-        left: 26%;
-    }
-    85% {
-        left: 33%;
-    }
-    100% {
-        top: 1%;
-        left: 30%;
-    }
-}
-@keyframes fadeOutUp {
-    70% {
-        opacity: 0.5;
-    }
-    100% {
+@keyframes anim2 {
+    0% {
         opacity: 0;
+        transform: translateY(-250px) scale(.5);
+        right: 60px;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(-60deg);
+        right: 60px;
+    }
+}
+
+@keyframes anim3 {
+    0% {
+        opacity: 0;
+        transform: translateY(-250px) scale(.5);
+        right: 45px;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(-60deg);
+        right: 45px;
     }
 }
