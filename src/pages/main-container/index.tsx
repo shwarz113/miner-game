@@ -16,7 +16,7 @@ type Props = {
 };
 export const MainContainer: FC<Props> = observer(({ app }) => {
     const [points, setPoints] = useState<string[]>([]);
-    const minerRef = useRef();
+    const minerRef = useRef<HTMLDivElement>();
     // const { gameStore } = useStore();
     const navigate = useNavigate();
     // const {
@@ -54,9 +54,8 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
             animatePoints();
         }
     });
-    // @ts-ignore
+
     const touchStart = () => minerRef?.current?.classList.add(styles.clicked);
-    // @ts-ignore
     const touchEnd = () => minerRef?.current?.classList.remove(styles.clicked);
 
     // const formatTimerValue = (v: number) => ((TURBO_TIME - v) / 1000).toFixed(2);
