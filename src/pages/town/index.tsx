@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
 import { BlockWrapper } from '../../components/block-wrapper';
 import styles from './index.module.css';
@@ -12,20 +12,28 @@ import {
 } from './constants';
 import { Button } from '../../components/button';
 import { AssetItemWrapper } from '../../components/asset-item-wrapper';
-import { nFormatter, numberWithSeparationThousands } from '../../utils/formatters';
+import { nFormatter } from '../../utils/formatters';
 
 export const TownContainer = () => {
     const data = objectsByType;
-    const refCars = useRef(null);
-    const refHotels = useRef(null);
-    const refObjects = useRef(null);
+    const refCars = useRef<HTMLDivElement>(null);
+    const refHotels = useRef<HTMLDivElement>(null);
+    const refObjects = useRef<HTMLDivElement>(null);
 
-    // @ts-ignore
-    const scrollToCars = () => refCars?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-    // @ts-ignore
-    const scrollToHotels = () => refHotels?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-    // @ts-ignore
-    const scrollToObjects = () => refObjects?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    const [activeTab, setActiveTab] = useState<ObjectItemType>(ObjectItemType.car);
+
+    const scrollToCars = () => {
+        refCars?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        setActiveTab(ObjectItemType.car);
+    }
+    const scrollToHotels = () => {
+        refHotels?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        setActiveTab(ObjectItemType.hotel);
+    }
+    const scrollToObjects = () => {
+        refObjects?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        setActiveTab(ObjectItemType.object);
+    }
 
     // todo переписать в сторе
     const paidAmount: Record<ObjectItemType, number> = {
@@ -37,15 +45,15 @@ export const TownContainer = () => {
     return (
         <div className={styles.townWrapper}>
             <div className={styles.townTabs}>
-                <div onClick={scrollToCars}>
+                <div onClick={scrollToCars} className={activeTab === ObjectItemType.car ? styles.activeTab : ''}>
                     <img src={objectsImgByType.car} alt="" />
                     {objectsNameByType.car}
                 </div>
-                <div onClick={scrollToHotels} className={styles.activeTab}>
+                <div onClick={scrollToHotels} className={activeTab === ObjectItemType.hotel ? styles.activeTab : ''}>
                     <img src={objectsImgByType.hotel} alt="" />
                     {objectsNameByType.hotel}
                 </div>
-                <div onClick={scrollToObjects}>
+                <div onClick={scrollToObjects} className={activeTab === ObjectItemType.object ? styles.activeTab : ''}>
                     <img src={objectsImgByType.object} alt="" />
                     {objectsNameByType.object}
                 </div>
