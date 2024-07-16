@@ -4,22 +4,12 @@ const api = axios.create({
     baseURL: 'https://tgame-backend-dev-oeugflkg3a-ez.a.run.app',
     withCredentials: true,
 });
-
-const telegramUserId =
-    typeof window !== 'undefined' ? window?.Telegram?.WebApp?.initDataUnsafe?.user?.id : undefined;
 const telegramInitData = typeof window !== 'undefined' ? window?.Telegram?.WebApp?.initData : undefined;
 
 const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
     const newConfig = config;
-    newConfig.url = `api/v1/${config.url}`;
-
-    if (newConfig.headers['Content-Type'] === 'multipart/form-data') {
-        return newConfig;
-    }
-
-    if (telegramUserId) {
-        newConfig.headers.Authorization = `tma ${telegramInitData}`;
-    }
+    newConfig.url = `/${config.url}`;
+    newConfig.headers.Authorization = `tma ${telegramInitData}`;
 
     return newConfig;
 };

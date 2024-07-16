@@ -1,18 +1,15 @@
 import { action, makeAutoObservable } from 'mobx';
-import {Investment, UserInfo} from '../hooks/type';
 import { Client } from '@stomp/stompjs';
 import { SOCKET_URL } from '../constants';
-import {BalanceResponse, InvestResponse} from "./types";
+import {BalanceResponse} from "./types";
 
 class MobXApp {
     client: Client | undefined;
-    commonInfo?: UserInfo;
     balance: number = 0;
     income: number = 0;
     battery: number = 0;
     userName: string = '';
     isLoading = true;
-    investments: Investment[] = [];
 
     constructor() {
         // @ts-ignore
@@ -35,15 +32,6 @@ class MobXApp {
 
     @action
     setUserInfo(value: string) {
-        const userInfo = JSON.parse(value) as UserInfo;
-        const { balance = 0, battery, income = 0, investments } = userInfo;
-        this.commonInfo = userInfo;
-        console.log('userInfo', userInfo);
-        this.balance = balance || 0;
-        this.battery = battery.currentValue || 0;
-        this.income = income || 0;
-        this.investments = investments;
-        this.isLoading = false;
     }
 
     @action
@@ -69,11 +57,6 @@ class MobXApp {
     }
     @action
     investWatcher(v: string) {
-        const res = JSON.parse(v) as InvestResponse;
-        const { balance, income, investment } = res;
-        this.balance = balance;
-        this.income = income;
-        this.investments = this.investments.map((item) => item.id === investment.id ? investment : item);
     }
 
     @action
