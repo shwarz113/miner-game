@@ -10,7 +10,7 @@ import BalanceTapsPic from '../../assets/images/balance-taps.png';
 import { MinerBlock } from "src/components/miner-block";
 import styles from './index.module.css';
 import classNames from "classnames";
-import { PlatformContainer } from "src/components/PlatformContainer";
+import { PlatformContainer } from "src/components/points/PlatformContainer";
 
 type Props = {
     app: MobXAppStore;

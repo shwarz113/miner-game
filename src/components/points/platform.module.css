@@ -1,0 +1,47 @@
+.container {
+    position: relative;
+    /*width: 100%;*/
+    /*height: 100%;*/
+}
+
+.platform {
+    position: relative;
+    width: 390px;
+    height: 515px;
+}
+
+.disabledItem {
+    opacity: 40%;
+}
+
+.hotel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 390px;
+    height: 515px;
+}
+
+.car {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 390px;
+    height: 515px;
+}
+
+.object {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 390px;
+    height: 515px;
+}
+
+.additionalObject {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 390px;
+    height: 515px;
+}
