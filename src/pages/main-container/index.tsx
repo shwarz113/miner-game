@@ -7,13 +7,15 @@ import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router-dom';
 import app, { MobXAppStore } from '../../store/MobXStore';
 import BalanceTapsPic from '../../assets/images/balance-taps.png';
-import {MinerBlock} from "../../components/miner-block";
+import { MinerBlock } from "src/components/miner-block";
 import styles from './index.module.css';
 import classNames from "classnames";
+import { PlatformContainer } from "src/components/PlatformContainer";
 
 type Props = {
     app: MobXAppStore;
 };
+
 export const MainContainer: FC<Props> = observer(({ app }) => {
     const [points, setPoints] = useState<string[]>([]);
     const minerRef = useRef<HTMLDivElement>();
@@ -64,9 +66,10 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
         <div className={styles.mainContainer}>
             <div className={styles.mainContainerBg}>
                 <div className="fake-scroll"></div>
-                {points.map((v) => (
-                    <div key={v} className={classNames(styles.coinWrapper, styles[`anim${v[0]}`])}/>
+                {points.map((v, index) => (
+                    <div key={`${v}_${index}`} className={classNames(styles.coinWrapper, styles[`anim${v[0]}`])}/>
                 ))}
+                <PlatformContainer />
                 <MinerBlock level={1} ref={minerRef} onClick={handleCoinClick} touchStart={touchStart} touchEnd={touchEnd} />
             </div>
             <div className={styles.balanceTaps}>

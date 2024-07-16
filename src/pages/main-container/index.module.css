@@ -79,13 +79,13 @@
     0% {
         opacity: 0;
         transform: translateY(-250px) scale(.5);
-        right: 30px;
+        left: 50%;
     }
 
     100% {
         opacity: 1;
         transform: translateY(0) rotate(-60deg);
-        right: 30px;
+        left: 50%;
     }
 }
 
@@ -93,13 +93,13 @@
     0% {
         opacity: 0;
         transform: translateY(-250px) scale(.5);
-        right: 60px;
+        left: calc(50% + 45px);
     }
 
     100% {
         opacity: 1;
         transform: translateY(0) rotate(-60deg);
-        right: 60px;
+        left: calc(50% + 45px);
     }
 }
 
@@ -107,12 +107,12 @@
     0% {
         opacity: 0;
         transform: translateY(-250px) scale(.5);
-        right: 45px;
+        left: calc(50% - 30px);
     }
 
     100% {
         opacity: 1;
         transform: translateY(0) rotate(-60deg);
-        right: 45px;
+        left: calc(50% - 30px);
     }
 }
