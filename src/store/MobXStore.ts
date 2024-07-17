@@ -1,9 +1,9 @@
 import { action, makeAutoObservable } from 'mobx';
-import { getUserInfoApi, initialUserInfo, updateUserInfoApi, UserData } from 'src/store/user';
+import { getUserInfoApi, initialUserInfo, updateUserInfoApi, UserData } from 'src/api/user';
 import api from 'src/api';
-import { buyObjectApi, getObjectsApi, getUserObjectsApi, ObjectItem } from 'src/store/objects';
-import { getMinersInfoApi, initialMinersInfo, MinersData } from 'src/store/miner';
-import {getLeadersApi, LeadersItem} from "src/store/leaders";
+import { buyObjectApi, getObjectsApi, getUserObjectsApi, ObjectItem } from 'src/api/objects';
+import { getMinersInfoApi, initialMinersInfo, MinersData } from 'src/api/miner';
+import {getLeadersApi, LeadersItem} from "src/api/leaders";
 
 class MobXApp {
     userInfo: UserData = initialUserInfo;
