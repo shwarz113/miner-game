@@ -49,7 +49,7 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
     const handleCoinClick = action(() => {
         handleDebounceClick();
         animatePoints();
-        if (app.battery) {
+        if (app.userInfo?.count_click) {
             // gameStore.isTap = true;
             app.handleTap();
             handleDebounceClick();

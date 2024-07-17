@@ -19,7 +19,7 @@ export const Init = memo(() => {
         document.querySelector('.main-container-bg')?.addEventListener('touchmove', (e) => {
             e.preventDefault();
         });
-        api.get('users').then(resp => console.log('response', resp))
+        // api.get('users').then(resp => console.log('response', resp))
     }, []);
 
     useEffect(() => {
