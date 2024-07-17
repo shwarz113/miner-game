@@ -1,8 +1,8 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://tgame-backend.alloca.info',
-    // withCredentials: true,
+    baseURL: 'https://tgame-backend-dev-oeugflkg3a-ez.a.run.app',
+    withCredentials: true,
 });
 const telegramInitData = typeof window !== 'undefined' ? window?.Telegram?.WebApp?.initData : undefined;
 
