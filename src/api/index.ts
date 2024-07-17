@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestCo
 
 const api = axios.create({
     baseURL: 'https://tgame-backend.alloca.info',
-    withCredentials: true,
+    // withCredentials: true,
 });
 const telegramInitData = typeof window !== 'undefined' ? window?.Telegram?.WebApp?.initData : undefined;
 
