@@ -1,6 +1,7 @@
 import { DOMAIN } from './constants';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { memo, useEffect } from 'react';
+import api from "src/api";
 // @ts-ignore
 const tg = window.Telegram?.WebApp;
 export const Init = memo(() => {
@@ -17,7 +18,8 @@ export const Init = memo(() => {
         tg?.setHeaderColor('#000');
         document.querySelector('.main-container-bg')?.addEventListener('touchmove', (e) => {
             e.preventDefault();
-        })
+        });
+        // api.get('users').then(resp => console.log('response', resp))
     }, []);
 
     useEffect(() => {

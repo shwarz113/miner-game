@@ -1,25 +1,16 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://tgame-backend-dev-oeugflkg3a-ez.a.run.app',
+    baseURL: 'https://tgame-backend.alloca.info',
     withCredentials: true,
 });
-
-const telegramUserId =
-    typeof window !== 'undefined' ? window?.Telegram?.WebApp?.initDataUnsafe?.user?.id : undefined;
 const telegramInitData = typeof window !== 'undefined' ? window?.Telegram?.WebApp?.initData : undefined;
 
 const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
     const newConfig = config;
-    newConfig.url = `api/v1/${config.url}`;
-
-    if (newConfig.headers['Content-Type'] === 'multipart/form-data') {
-        return newConfig;
-    }
-
-    if (telegramUserId) {
-        newConfig.headers.Authorization = `tma ${telegramInitData}`;
-    }
+    // const v= 'user=%7B%22id%22%3A361872281%2C%22first_name%22%3A%22Nikolay%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22shwarz777%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-6250684073079602450&chat_type=private&auth_date=1721241681&hash=5c4d400ac6e8a18c8e49661aabadff3426956316596548248958c83b418878d6';
+    newConfig.url = `/${config.url}`;
+    newConfig.headers.Authorization = `tma ${telegramInitData}`;
 
     return newConfig;
 };

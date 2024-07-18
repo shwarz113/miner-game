@@ -18,10 +18,10 @@ import { LeadersContainer } from './pages/leaders';
 import {BoostContainer} from "./pages/boost";
 import {TownContainer} from "./pages/town";
 import {Navbar} from "./components/navbar";
+import { toJS } from 'mobx'
 
 function App() {
-    console.log('app', app);
-    const navigate = useNavigate();
+    console.log('app', toJS(app));
     const { pathname } = useLocation();
 
     // if (app.isLoading) {
@@ -31,6 +31,13 @@ function App() {
     //         </div>
     //     )
     // }
+    const updateUserInfo = () => setTimeout(() => {
+        app.updateUserInfo();
+        updateUserInfo();
+    }, 5000)
+    useEffect(() => {
+        updateUserInfo();
+    }, []);
 
     return (
         <div className="App">
@@ -38,10 +45,10 @@ function App() {
             <Header app={app} isMainPage={pathname === DOMAIN} />
             <Routes>
                 <Route path={DOMAIN} element={<MainContainer app={app} />} />
-                <Route path={`${DOMAIN}${PagesEnum.Income}`} element={<IncomeContainer />} />
-                <Route path={`${DOMAIN}${PagesEnum.Leaders}`} element={<LeadersContainer />} />
-                <Route path={`${DOMAIN}${PagesEnum.Boost}`} element={<BoostContainer />} />
-                <Route path={`${DOMAIN}${PagesEnum.City}`} element={<TownContainer />} />
+                <Route path={`${DOMAIN}${PagesEnum.Income}`} element={<IncomeContainer app={app} />} />
+                <Route path={`${DOMAIN}${PagesEnum.Leaders}`} element={<LeadersContainer app={app} />} />
+                <Route path={`${DOMAIN}${PagesEnum.Boost}`} element={<BoostContainer app={app} />} />
+                <Route path={`${DOMAIN}${PagesEnum.City}`} element={<TownContainer app={app} />} />
             </Routes>
             <Navbar />
         </div>

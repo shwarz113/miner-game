@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, {FC, useEffect, useMemo} from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
 import PlusPic from '../../assets/images/plus.png';
 import PlusCirclePic from '../../assets/images/plus-circle.png';
@@ -12,6 +12,7 @@ import { BlockWrapper } from '../../components/block-wrapper';
 import { leadersMock } from './mock';
 import { LeaderItem } from './LeaderItem';
 import {Button} from "../../components/button";
+import {MobXAppStore} from "src/store/MobXStore";
 
 const Block = ({
     points,
@@ -44,19 +45,12 @@ const Block = ({
         {content}
     </BlockWrapper>
 );
-export const LeadersContainer = () => {
-    const data = {
-        leaders: [
-            ...leadersMock,
-            {
-                user_id: '1',
-                nickname: 'Test User',
-                photo: `https://randomuser.me/api/portraits/thumb/women/50.jpg`,
-                points_rating: 123333,
-                ranking_place: 123333,
-            },
-        ],
-    };
+
+type Props = {
+    app: MobXAppStore;
+}
+export const LeadersContainer: FC<Props> = ({ app }) => {
+    const { leaders, userInfo: { id: userId } } = app;
     const inviteContent = useMemo(
         () => (
             <div>
@@ -91,7 +85,7 @@ export const LeadersContainer = () => {
         []
     );
     const leadersContent = useMemo(
-        () => (
+        () => leaders?.length ? (
             <div>
                 <div className={styles.tableHeader}>
                     <div>Место</div>
@@ -99,14 +93,18 @@ export const LeadersContainer = () => {
                     <div>Очки</div>
                 </div>
                 <div style={{ position: 'relative' }}>
-                    {data.leaders.map((player) => (
-                        <LeaderItem key={player.user_id} player={player} isCurrentPlayer={player.user_id === '1'} />
+                    {leaders.map((player) => (
+                        <LeaderItem key={player.id} player={player} isCurrentPlayer={player.id === userId} />
                     ))}
                 </div>
             </div>
-        ),
-        [data]
+        ): <div>Данных по игрокам нет</div>,
+        [leaders]
     );
+
+    useEffect(() => {
+        app.getLeaders();
+    }, [])
 
     return (
         <div className={styles.leadersWrapper}>

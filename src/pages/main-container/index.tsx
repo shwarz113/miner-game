@@ -1,7 +1,6 @@
 import React, { FC, useCallback, useRef, useState } from 'react';
 // import AnimatedNumber from 'animated-number-react';
 import { action } from 'mobx';
-import { useStore } from '../../store/store';
 // import { TURBO_TIME } from '../../store/constants';
 import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router-dom';
@@ -49,9 +48,10 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
     const handleCoinClick = action(() => {
         handleDebounceClick();
         animatePoints();
-        if (app.battery) {
+        if (app.userInfo?.countClick) {
             // gameStore.isTap = true;
-            app.handleTap();
+            // app.handleTap();
+            app.handleTapMiner();
             handleDebounceClick();
             animatePoints();
         }
@@ -74,7 +74,7 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
             </div>
             <div className={styles.balanceTaps}>
                 <img src={BalanceTapsPic} alt=""/>
-                <div>240/1000</div>
+                <div>{app.userInfo.countClick}/1000</div>
             </div>
         </div>
     );

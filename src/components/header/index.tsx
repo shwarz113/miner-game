@@ -11,14 +11,15 @@ type Props = {
     isMainPage: boolean;
 }
 export const Header: FC<Props> = observer(({ app, isMainPage }) => {
+    const { userInfo: { balance, username, }} = app;
     return (
         <div className={classNames(styles.header, !isMainPage && styles.headerMinimal)}>
             <div className={styles.headerItem}>
                 <div className={styles.headerItemAvatar}><img src={Avatar} alt=":)"/></div>
-                <div>Axel Tuogo</div>
+                <div>{username}</div>
             </div>
             <div className={styles.headerItem}>
-                <div>152 350</div>
+                <div>{balance}</div>
                 <div className={styles.headerItemPic}><img src={Coin} alt="O"/></div>
             </div>
         </div>
