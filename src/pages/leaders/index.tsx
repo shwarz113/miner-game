@@ -85,7 +85,7 @@ export const LeadersContainer: FC<Props> = ({ app }) => {
         []
     );
     const leadersContent = useMemo(
-        () => (
+        () => leaders.length ? (
             <div>
                 <div className={styles.tableHeader}>
                     <div>Место</div>
@@ -98,7 +98,7 @@ export const LeadersContainer: FC<Props> = ({ app }) => {
                     ))}
                 </div>
             </div>
-        ),
+        ): <div>Данных по игрокам нет</div>,
         [leaders]
     );
 

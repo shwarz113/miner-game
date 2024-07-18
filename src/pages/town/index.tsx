@@ -41,15 +41,12 @@ export const TownContainer: FC<Props> = ({ app }) => {
 
     const ownedAmount: Record<ObjectItemType, number> = useMemo(() => {
         return {
-            [ObjectItemType.car]: objectsByType.CAR.findIndex(
-                ({ status }) => status !== ObjectItemStatus.ownedStatus
-            ),
-            [ObjectItemType.hotel]: objectsByType.BUILDING.findIndex(
-                ({ status }) => status !== ObjectItemStatus.ownedStatus
-            ),
-            [ObjectItemType.object]: objectsByType.OBJECT.findIndex(
-                ({ status }) => status !== ObjectItemStatus.ownedStatus
-            ),
+            [ObjectItemType.car]:
+                objectsByType.CAR?.findIndex(({ status }) => status !== ObjectItemStatus.ownedStatus) || 0,
+            [ObjectItemType.hotel]:
+                objectsByType.BUILDING?.findIndex(({ status }) => status !== ObjectItemStatus.ownedStatus) || 0,
+            [ObjectItemType.object]:
+                objectsByType.OBJECT?.findIndex(({ status }) => status !== ObjectItemStatus.ownedStatus) || 0,
         };
     }, []);
 
@@ -73,50 +70,65 @@ export const TownContainer: FC<Props> = ({ app }) => {
                 </div>
             </div>
             <div className={styles.townContent}>
-                {Object.entries(objectsByType).map(([key, items]) => (
-                    <BlockWrapper className={styles.blockWrapper}>
-                        <div
-                            className={styles.top}
-                            {...(key === ObjectItemType.car && { ref: refCars })}
-                            {...(key === ObjectItemType.hotel && { ref: refHotels })}
-                            {...(key === ObjectItemType.object && { ref: refObjects })}
-                        >
-                            <div>
-                                <img src={objectsImgByType[key as ObjectItemType]} alt="" />
-                                <div>{objectsNameByType[key as ObjectItemType]}</div>
+                {Object.entries(objectsByType).length ? (
+                    Object.entries(objectsByType).map(([key, items]) => (
+                        <BlockWrapper className={styles.blockWrapper}>
+                            <div
+                                className={styles.top}
+                                {...(key === ObjectItemType.car && { ref: refCars })}
+                                {...(key === ObjectItemType.hotel && { ref: refHotels })}
+                                {...(key === ObjectItemType.object && { ref: refObjects })}
+                            >
+                                <div>
+                                    <img src={objectsImgByType[key as ObjectItemType]} alt="" />
+                                    <div>{objectsNameByType[key as ObjectItemType]}</div>
+                                </div>
+                                <div>
+                                    {ownedAmount[key as ObjectItemType]} из {items.length}
+                                </div>
                             </div>
-                            <div>
-                                {ownedAmount[key as ObjectItemType]} из {items.length}
+                            <div className={styles.items}>
+                                {items.map(({ name, dailyIncome, price, id }) => (
+                                    <AssetItemWrapper
+                                        img={imagesByObjectId[id]}
+                                        middle={{ content: `+${nFormatter({ num: dailyIncome })} / день` }}
+                                        title={name}
+                                        button={
+                                            <Button
+                                                onClick={() => {}}
+                                                size={'s'}
+                                                icon={CoinPic}
+                                                type={
+                                                    ownedObjectsById[id].status === ObjectItemStatus.ownedStatus
+                                                        ? 'text'
+                                                        : 'default'
+                                                }
+                                                disabled={
+                                                    ownedObjectsById[id].status ===
+                                                    ObjectItemStatus.notAvailableStatus
+                                                }
+                                                className={styles.buttonBuy}
+                                            >
+                                                {ownedObjectsById[id].status === ObjectItemStatus.ownedStatus
+                                                    ? nFormatter({ num: price })
+                                                    : `Купить за ${nFormatter({ num: price })}`}
+                                            </Button>
+                                        }
+                                        className={styles.assetItemWrapper}
+                                        {...(ownedObjectsById[id].status === ObjectItemStatus.ownedStatus && {
+                                            status: 'primary',
+                                        })}
+                                        {...(ownedObjectsById[id].status === ObjectItemStatus.notAvailableStatus && {
+                                            status: 'ghost',
+                                        })}
+                                    />
+                                ))}
                             </div>
-                        </div>
-                        <div className={styles.items}>
-                            {items.map(({ name, dailyIncome, price, id }) => (
-                                <AssetItemWrapper
-                                    img={imagesByObjectId[id]}
-                                    middle={{ content: `+${nFormatter({ num: dailyIncome })} / день` }}
-                                    title={name}
-                                    button={
-                                        <Button
-                                            onClick={() => {}}
-                                            size={'s'}
-                                            icon={CoinPic}
-                                            type={ownedObjectsById[id].status === ObjectItemStatus.ownedStatus ? 'text' : 'default'}
-                                            disabled={ownedObjectsById[id].status === ObjectItemStatus.notAvailableStatus}
-                                            className={styles.buttonBuy}
-                                        >
-                                            {ownedObjectsById[id].status === ObjectItemStatus.ownedStatus
-                                                ? nFormatter({ num: price })
-                                                : `Купить за ${nFormatter({ num: price })}`}
-                                        </Button>
-                                    }
-                                    className={styles.assetItemWrapper}
-                                    {...(ownedObjectsById[id].status === ObjectItemStatus.ownedStatus && { status: 'primary' })}
-                                    {...(ownedObjectsById[id].status === ObjectItemStatus.notAvailableStatus && { status: 'ghost' })}
-                                />
-                            ))}
-                        </div>
-                    </BlockWrapper>
-                ))}
+                        </BlockWrapper>
+                    ))
+                ) : (
+                    <div>Данных по объектам нет</div>
+                )}
             </div>
         </div>
     );

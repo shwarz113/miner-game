@@ -26,13 +26,15 @@ export const BoostContainer: FC<Props> = ({ app }) => {
                     img={EnergyPic}
                     middle={{text: `${userInfo.boost} / ${minersInfo.boost}` }}
                     title={'Энергия'}
-                    button={(<Button onClick={() => {}} size={'s'}>Получить</Button>)}
+                    button={(<Button onClick={() => {}} size={'s'} disabled={!userInfo.boost}>Получить</Button>)}
+                    status={userInfo.boost ? 'default': 'ghost'}
                 />
                 <AssetItemWrapper
                     img={RocketPic}
                     middle={{text: `${userInfo.turboBoost} / ${minersInfo.turboBoost}` }}
                     title={'Турбобуст'}
-                    button={(<Button onClick={() => {}} size={'s'} disabled>Получить</Button>)}
+                    button={(<Button onClick={() => {}} size={'s'} disabled={!userInfo.turboBoost}>Получить</Button>)}
+                    status={userInfo.turboBoost ? 'default': 'ghost'}
                 />
             </div>
             <BlockWrapper className={styles.blockWrapper}>
