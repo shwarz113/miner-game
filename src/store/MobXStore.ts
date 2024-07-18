@@ -27,7 +27,6 @@ class MobXApp {
         // this.userName = window.Telegram?.WebApp?.initDataUnsafe?.user?.username || 'Это тест';
         makeAutoObservable(this);
         this.getUserInfo();
-        setInterval(this.updateUserInfo, 5000);
         console.log('mobx');
     }
 
@@ -112,6 +111,8 @@ class MobXApp {
                 v.id === id ? { ...v, status: ObjectItemStatus.ownedStatus } : v
             );
         });
+        this.getObjects();
+        this.getUserInfo();
     }
     @action
     inviteByRef(refUserId: string) {

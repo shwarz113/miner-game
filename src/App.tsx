@@ -31,6 +31,13 @@ function App() {
     //         </div>
     //     )
     // }
+    const updateUserInfo = () => setTimeout(() => {
+        app.updateUserInfo();
+        updateUserInfo();
+    }, 5000)
+    useEffect(() => {
+        updateUserInfo();
+    }, []);
 
     return (
         <div className="App">
