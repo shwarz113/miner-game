@@ -17,7 +17,7 @@ export const BoostContainer: FC<Props> = ({ app }) => {
     const { minersInfo, userInfo, getMinersInfo } = app;
 
     useEffect(() => {
-        getMinersInfo();
+        getMinersInfo(userInfo.minerId);
     }, [])
 
     return (
