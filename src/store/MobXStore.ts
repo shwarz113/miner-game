@@ -1,9 +1,16 @@
 import { action, makeAutoObservable } from 'mobx';
-import { getUserInfoApi, initialUserInfo, updateUserInfoApi, UserData } from 'src/api/user';
-import api from 'src/api';
+import {
+    completeTaskApi,
+    getUserInfoApi,
+    initialUserInfo,
+    inviteApi,
+    updateUserInfoApi,
+    UserData,
+    getLeadersApi,
+    LeadersItem, getIncomeStatsApi, UserIncomeStats,
+} from 'src/api/user';
 import { buyObjectApi, getObjectsApi, getUserObjectsApi, ObjectItem } from 'src/api/objects';
 import { getMinersInfoApi, initialMinersInfo, MinersData } from 'src/api/miner';
-import {getLeadersApi, LeadersItem} from "src/api/leaders";
 
 class MobXApp {
     userInfo: UserData = initialUserInfo;
@@ -11,6 +18,7 @@ class MobXApp {
     objects: ObjectItem[] = [];
     leaders: LeadersItem[] = [];
     minersInfo: MinersData = initialMinersInfo;
+    incomeStats?: UserIncomeStats;
     isLoading = true;
 
     constructor() {
@@ -67,25 +75,34 @@ class MobXApp {
             })
             .catch((e) => console.log(e));
     }
+    @action
+    getIncomeStats() {
+        getIncomeStatsApi()
+            .then((resp) => {
+                console.log('getIncomeStatsApi', resp);
+                this.incomeStats = resp.data;
+            })
+            .catch((e) => console.log(e));
+    }
 
     @action
     updateUserInfo() {
         updateUserInfoApi({
-            count_click: this.userInfo.count_click,
-            count_points: this.userInfo.count_points,
+            count_click: this.userInfo.countClick,
+            count_points: this.userInfo.countPoints,
         });
     }
 
     @action
     updateUserClicks() {
         updateUserInfoApi({
-            count_click: this.userInfo.count_click,
+            count_click: this.userInfo.countClick,
         });
     }
 
     @action
     handleTapMiner() {
-        this.userInfo.count_click = this.userInfo?.count_click - 1;
+        this.userInfo.countClick = this.userInfo.countClick - 1;
         // todo реализовать подсчет очков, учитывая: турбо режим(х5), частый таппинг (х5) и очки за тап (points_per_click)
     }
 
@@ -97,7 +114,13 @@ class MobXApp {
         });
     }
     @action
-    investWatcher() {}
+    inviteByRef(refUserId: string) {
+        inviteApi(refUserId);
+    }
+    @action
+    completeTask(taskId: string) {
+        completeTaskApi(taskId);
+    }
 }
 
 export type MobXAppStore = MobXApp;

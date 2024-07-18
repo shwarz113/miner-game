@@ -1,15 +1,18 @@
-import api from "src/api/index";
+import api from 'src/api/index';
 
 export type UserData = {
-    nickname: string;
+    id: string;
+    username: string;
     balance: number;
-    count_points: number;
-    count_click: number;
-    id_miner: string;
+    countPoints: number;
+    countClick: number;
+    minerId: string;
+    actionCount: number;
     level: number;
-    points_per_click: number;
+    pointsPerClick: number;
     boost: number;
     turbo_boost: number;
+    telegramId: number;
 };
 
 export type UpdateUserData = {
@@ -17,17 +20,56 @@ export type UpdateUserData = {
     count_click: number;
 };
 
+export type LeadersItem = {
+    id: string;
+    username: string;
+    balance: number;
+    userRating: number;
+    rankingPlace: number;
+};
+
+export type UserIncomeStats = {
+    statistics: {
+        balance: number;
+        countPoints: number;
+        priceObjects: number;
+        incomeFromActive: number;
+        incomeFromObject: number;
+        totalCosts: number;
+    },
+    objectIncome: {
+        balance: number;
+        countPoints: number;
+        dailyIncome: number;
+        totalIncome: number;
+    },
+    activeIncome: {
+        type: string;
+        income: number;
+        createdAt: string;
+    },
+}
+
 export const initialUserInfo: UserData = {
-    nickname: '',
+    username: '',
     balance: 0,
-    count_points: 0,
-    count_click: 0,
-    id_miner: '',
+    countPoints: 0,
+    countClick: 0,
+    minerId: '',
     level: 1,
-    points_per_click: 1,
+    pointsPerClick: 1,
     boost: 0,
     turbo_boost: 0,
+    actionCount: 0,
+    telegramId: 1,
+    id: '',
 };
 
 export const getUserInfoApi = () => api.get<UserData>('users');
-export const updateUserInfoApi = (v: UpdateUserData) => api.patch<{id: string}>('users', v);
+export const updateUserInfoApi = (v: UpdateUserData) => api.patch<{ id: string }>('users', v);
+
+export const inviteApi = (refUserId: string) => api.post<{ id: string }>('new_invite', { id: refUserId });
+export const completeTaskApi = (taskId: string) => api.post<{ id: string }>('new_entry', { id: taskId });
+
+export const getLeadersApi = () => api.get<LeadersItem[]>('users/leaders');
+export const getIncomeStatsApi = () => api.get<UserIncomeStats>('users/stats');

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC, useEffect} from 'react';
 import CoinPic from "../../assets/svg/coin-header.svg";
 import MinerNavbarPic from "../../assets/images/miner-navbar.png";
 import CityPic from "../../assets/images/city.png";
@@ -8,8 +8,12 @@ import CarPic from "../../assets/images/car.png";
 import PlusPic from "../../assets/images/plus.png";
 import {BlockWrapper} from "../../components/block-wrapper";
 import styles from './index.module.css';
+import {MobXAppStore} from "src/store/MobXStore";
 
-export const IncomeContainer = () => {
+type Props = {
+    app: MobXAppStore;
+}
+export const IncomeContainer: FC<Props> = ({ app }) => {
     const data = {
         statistic: {
             balance: 152350,
@@ -30,6 +34,10 @@ export const IncomeContainer = () => {
             { name: 'Подписка на канал', total: 20000, date: '2024-06-10 12:44:20' },
         ],
     }
+
+    useEffect(() => {
+        app.getIncomeStats();
+    }, [])
     return (
         <div className={styles.incomeWrapper}>
             <div className={styles.incomeBalance}>

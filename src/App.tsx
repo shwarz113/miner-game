@@ -38,7 +38,7 @@ function App() {
             <Header app={app} isMainPage={pathname === DOMAIN} />
             <Routes>
                 <Route path={DOMAIN} element={<MainContainer app={app} />} />
-                <Route path={`${DOMAIN}${PagesEnum.Income}`} element={<IncomeContainer />} />
+                <Route path={`${DOMAIN}${PagesEnum.Income}`} element={<IncomeContainer app={app} />} />
                 <Route path={`${DOMAIN}${PagesEnum.Leaders}`} element={<LeadersContainer />} />
                 <Route path={`${DOMAIN}${PagesEnum.Boost}`} element={<BoostContainer />} />
                 <Route path={`${DOMAIN}${PagesEnum.City}`} element={<TownContainer />} />

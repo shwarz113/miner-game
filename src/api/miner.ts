@@ -1,10 +1,10 @@
 import api from "src/api/index";
 
 export type MinersData = {
-    idMiner: string;
+    id: string;
     level: number;
-    idMinerNew: string;
-    levelNew: number;
+    newId: string;
+    newLevel: number;
     price: number;
     pointsPerClick: number;
     boost: number;
@@ -12,10 +12,10 @@ export type MinersData = {
 };
 
 export const initialMinersInfo: MinersData = {
-    idMiner: '1',
+    id: '1',
     level: 1,
-    idMinerNew: '11',
-    levelNew: 2,
+    newId: '11',
+    newLevel: 2,
     price: 0,
     pointsPerClick: 1,
     boost: 0,
