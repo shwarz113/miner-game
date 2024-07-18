@@ -1,11 +1,11 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import React from "react";
 import {DOMAIN, PagesEnum} from "../../constants";
-import CityPic from "../../assets/images/city.png";
-import LeadersPic from "../../assets/images/leaders.png";
-import MinerNavbarPic from "../../assets/images/miner-navbar.png";
-import IncomePic from "../../assets/images/income.png";
-import BoostPic from "../../assets/images/boost.png";
+import CityPic from "../../assets/svg/navBar/city.svg";
+import LeadersPic from "../../assets/svg/navBar/leaders.svg";
+import MinerNavbarPic from "../../assets/svg/navBar/miner.svg";
+import IncomePic from "../../assets/svg/navBar/income.svg";
+import BoostPic from "../../assets/svg/navBar/boost.svg";
 import styles from './index.module.css';
 import classNames from "classnames";
 

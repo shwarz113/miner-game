@@ -45,13 +45,13 @@
     z-index: 1;
 }
 .mainContainerBg .coinWrapper.anim1 {
-    animation: anim1 1s ease-in 0s 1 reverse forwards;
+    animation: anim1 1.5s ease-in 0s 1 reverse forwards;
 }
 .mainContainerBg .coinWrapper.anim2 {
-    animation: anim2 1s ease-in 0s 1 reverse forwards;
+    animation: anim2 1.5s ease-in 0s 1 reverse forwards;
 }
 .mainContainerBg .coinWrapper.anim3 {
-    animation: anim3 1s ease-in 0s 1 reverse forwards;
+    animation: anim3 1.5s ease-in 0s 1 reverse forwards;
 }
 
 .balanceTaps {
@@ -68,7 +68,7 @@
 @keyframes anim1 {
     0% {
         opacity: 0;
-        transform: translateY(-250px) scale(.5);
+        transform: translateY(-65vh) scale(.5);
         left: 50%;
     }
 
@@ -82,7 +82,7 @@
 @keyframes anim2 {
     0% {
         opacity: 0;
-        transform: translateY(-250px) scale(.5);
+        transform: translateY(-65vh) scale(.5);
         left: calc(50% + 45px);
     }
 
@@ -96,7 +96,7 @@
 @keyframes anim3 {
     0% {
         opacity: 0;
-        transform: translateY(-250px) scale(.5);
+        transform: translateY(-65vh) scale(.5);
         left: calc(50% - 30px);
     }
 

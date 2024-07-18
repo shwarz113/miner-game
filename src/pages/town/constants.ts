@@ -1,6 +1,6 @@
 import CarPic from '../../assets/svg/car.svg';
 import ObjectPic from '../../assets/svg/object.svg';
-import CityPic from '../../assets/images/city.png';
+import CityPic from '../../assets/svg/navBar/city.svg';
 import Car1 from '../../assets/images/car-1.png';
 import Car2 from '../../assets/images/car-2.png';
 import Car3 from '../../assets/images/car-3.png';

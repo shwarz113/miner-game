@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
-import MinerNavbarPic from '../../assets/images/miner-navbar.png';
-import CityPic from '../../assets/images/city.png';
+import MinerNavbarPic from '../../assets/svg/navBar/miner.svg';
+import CityPic from '../../assets/svg/navBar/city.svg';
 import CityBluePic from '../../assets/images/city-blue.png';
 import GoalPic from '../../assets/images/goal.png';
 import CarPic from '../../assets/images/car.png';

@@ -1,6 +1,6 @@
-import { car_1_level, car_2_level, car_3_level, car_4_level, car_5_level } from "src/assets/images/platform/cars";
-import { hotel_1_level, hotel_2_level, hotel_3_level, hotel_4_level, hotel_5_level } from "src/assets/images/platform/hotels";
-import { object_1_level, object_2_level, object_3_level, object_4_level, object_5_level } from "src/assets/images/platform/objects";
+import { car_1_level, car_2_level, car_3_level, car_4_level, car_5_level } from "src/assets/svg/platform/cars";
+import { hotel_1_level, hotel_2_level, hotel_3_level, hotel_4_level, hotel_5_level } from "src/assets/svg/platform/hotels";
+import { object_1_level, object_2_level, object_3_level, object_4_level, object_5_level } from "src/assets/svg/platform/objects";
 
 export enum EPlatformItems {
     Hotel = 'hotel',

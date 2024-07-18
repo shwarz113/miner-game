@@ -1,5 +1,5 @@
 import React from 'react';
-import platform from "src/assets/images/platform/platform.png";
+import platform from "src/assets/svg/platform/platform.svg";
 import styles from './platform.module.css';
 import { EPlatformItems, getIconPlatformByLevel } from "src/components/points/utils";
 import classNames from "classnames";
