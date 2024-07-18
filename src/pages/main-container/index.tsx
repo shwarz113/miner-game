@@ -9,7 +9,7 @@ import BalanceTapsPic from '../../assets/images/balance-taps.png';
 import { MinerBlock } from "src/components/miner-block";
 import styles from './index.module.css';
 import classNames from "classnames";
-import { PlatformContainer } from "src/components/PlatformContainer";
+import { PlatformContainer } from "src/components/points/PlatformContainer";
 
 type Props = {
     app: MobXAppStore;
@@ -65,7 +65,6 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
     return (
         <div className={styles.mainContainer}>
             <div className={styles.mainContainerBg}>
-                <div className="fake-scroll"></div>
                 {points.map((v, index) => (
                     <div key={`${v}_${index}`} className={classNames(styles.coinWrapper, styles[`anim${v[0]}`])}/>
                 ))}

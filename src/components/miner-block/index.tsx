@@ -17,7 +17,15 @@ export const MinerBlock: FC<Props> = ({ onClick, disabled = false, ref, touchSta
         <div className={classNames(styles.minerWrapper, disabled && styles.disabled)}>
             <img className={styles.minerWrapperPic} src={MinerWrapperPic} alt=""/>
             <div className={styles.miner}>
-                <img ref={ref} className={styles.minerPic} src={Miner1Pic} alt="" onClick={onClick} onTouchStart={touchStart} onTouchEnd={touchEnd}/>
+                <img
+                    ref={ref}
+                    className={styles.minerPic}
+                    src={Miner1Pic}
+                    alt=""
+                    onClick={onClick}
+                    onTouchStart={touchStart}
+                    onTouchEnd={touchEnd}
+                />
             </div>
         </div>
     );

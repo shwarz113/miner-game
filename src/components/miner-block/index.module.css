@@ -2,6 +2,12 @@
     position: relative;
 }
 
+.minerWrapper img {
+    max-width: 90%;
+    max-height: 100%;
+    transition: width 300ms;
+}
+
 .minerWrapper.disabled .minerWrapperPic {
     filter: blur(2px);
     opacity: .4;
@@ -13,6 +19,7 @@
 .minerWrapperPic, .minerPic {
     max-width: 100%;
 }
+
 .miner {
     position: absolute;
     top: 0;
