@@ -1,7 +1,6 @@
 import React, { FC, useCallback, useRef, useState } from 'react';
 // import AnimatedNumber from 'animated-number-react';
 import { action } from 'mobx';
-import { useStore } from '../../store/store';
 // import { TURBO_TIME } from '../../store/constants';
 import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router-dom';
