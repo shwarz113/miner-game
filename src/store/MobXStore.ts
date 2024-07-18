@@ -88,23 +88,28 @@ class MobXApp {
 
     @action
     updateUserInfo() {
-        updateUserInfoApi({
-            count_click: this.userInfo.countClick,
-            count_points: this.userInfo.countPoints,
-        });
+        console.log('user', this.userInfo);
+        if (this.userInfo) {
+            updateUserInfoApi({
+                countClick: this.userInfo.countClick,
+                countPoints: this.userInfo.countPoints,
+            });
+        }
     }
 
     @action
     updateUserClicks() {
         updateUserInfoApi({
-            count_click: this.userInfo.countClick,
+            countClick: this.userInfo.countClick,
         });
     }
 
     @action
     handleTapMiner() {
+        console.log('this.userInfo', this.userInfo)
         this.userInfo.countClick = this.userInfo.countClick - 1;
-        this.userInfo.countPoints = this.userInfo.countClick + this.userInfo.pointsPerClick;
+        this.userInfo.countPoints = this.userInfo.countPoints + this.userInfo.pointsPerClick;
+        this.userInfo.balance = this.userInfo.balance + this.userInfo.pointsPerClick;
         // todo реализовать подсчет очков, учитывая: турбо режим(х5), частый таппинг (х5) и очки за тап (points_per_click)
     }
 

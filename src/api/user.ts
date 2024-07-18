@@ -16,8 +16,8 @@ export type UserData = {
 };
 
 export type UpdateUserData = {
-    count_points?: number;
-    count_click: number;
+    countPoints?: number;
+    countClick: number;
 };
 
 export type LeadersItem = {
