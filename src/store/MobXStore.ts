@@ -16,8 +16,8 @@ import { getMinersInfoApi, initialMinersInfo, MinersData } from 'src/api/miner';
 
 class MobXApp {
     userInfo: UserData = initialUserInfo;
-    objects: ObjectItem[] = [];
-    leaders: LeadersItem[] = [];
+    objects?: ObjectItem[];
+    leaders?: LeadersItem[];
     minersInfo: MinersData = initialMinersInfo;
     incomeStats?: UserIncomeStats;
     isLoading = true;
@@ -108,8 +108,7 @@ class MobXApp {
     @action
     handleBuyObject(id: string) {
         buyObjectApi(id).then(() => {
-            const newObject = toJS(this.objects).find((object) => object.id === id) as ObjectItem;
-            this.objects = toJS(this.objects).map((v) =>
+            this.objects = toJS(this.objects || []).map((v) =>
                 v.id === id ? { ...v, status: ObjectItemStatus.ownedStatus } : v
             );
         });

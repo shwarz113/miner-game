@@ -50,7 +50,7 @@ type Props = {
     app: MobXAppStore;
 }
 export const LeadersContainer: FC<Props> = ({ app }) => {
-    const { leaders, userInfo: { id: userId }, getLeaders } = app;
+    const { leaders, userInfo: { id: userId } } = app;
     const inviteContent = useMemo(
         () => (
             <div>
@@ -103,7 +103,7 @@ export const LeadersContainer: FC<Props> = ({ app }) => {
     );
 
     useEffect(() => {
-        getLeaders();
+        app.getLeaders();
     }, [])
 
     return (

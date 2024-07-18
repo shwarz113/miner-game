@@ -13,7 +13,7 @@ type Props = {
     app: MobXAppStore;
 };
 export const TownContainer: FC<Props> = ({ app }) => {
-    const { objects, getObjects } = app;
+    const { objects } = app;
     const refCars = useRef<HTMLDivElement>(null);
     const refHotels = useRef<HTMLDivElement>(null);
     const refObjects = useRef<HTMLDivElement>(null);
@@ -47,7 +47,7 @@ export const TownContainer: FC<Props> = ({ app }) => {
     }, []);
 
     useEffect(() => {
-        getObjects();
+        app.getObjects();
     }, []);
 
     return (
