@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useMemo, useRef, useState} from 'react';
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
 import { BlockWrapper } from 'src/components/block-wrapper';
 import styles from './index.module.css';
@@ -33,7 +33,7 @@ export const TownContainer: FC<Props> = ({ app }) => {
         setActiveTab(ObjectItemType.object);
     };
 
-    const objectsByType = useMemo(() => getObjectsByType(objects), [objects?.length]);
+    const objectsByType = useMemo(() => getObjectsByType(objects || []), [objects?.length]);
 
     const ownedAmount: Record<ObjectItemType, number> = useMemo(() => {
         return {
