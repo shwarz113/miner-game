@@ -65,7 +65,6 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
     return (
         <div className={styles.mainContainer}>
             <div className={styles.mainContainerBg}>
-                <div className="fake-scroll"></div>
                 {points.map((v, index) => (
                     <div key={`${v}_${index}`} className={classNames(styles.coinWrapper, styles[`anim${v[0]}`])}/>
                 ))}

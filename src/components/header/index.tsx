@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
-import React, {FC, useEffect} from 'react';
-import {MobXAppStore} from "../../store/MobXStore";
+import React, { FC } from 'react';
+import { MobXAppStore } from "src/store/MobXStore";
 import Coin from '../../assets/svg/coin-header.svg'
 import Avatar from '../../assets/images/avatar.png'
 import styles from './index.module.css';
@@ -11,11 +11,15 @@ type Props = {
     isMainPage: boolean;
 }
 export const Header: FC<Props> = observer(({ app, isMainPage }) => {
-    const { userInfo: { balance, username, }} = app;
+    const { userInfo: { balance, username, photo_url }} = app;
+
+    const iconAvatar = photo_url ? photo_url: Avatar;
     return (
         <div className={classNames(styles.header, !isMainPage && styles.headerMinimal)}>
             <div className={styles.headerItem}>
-                <div className={styles.headerItemAvatar}><img src={Avatar} alt=":)"/></div>
+                <div className={styles.headerItemAvatar}>
+                    <img src={iconAvatar} alt=":)"/>
+                </div>
                 <div>{username}</div>
             </div>
             <div className={styles.headerItem}>

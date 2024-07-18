@@ -54,12 +54,6 @@
     animation: anim3 1s ease-in 0s 1 reverse forwards;
 }
 
-.mainContainerBg .fake-scroll {
-    top: 0;
-    height: calc(100% + 1px);
-    width: 1px;
-}
-
 .balanceTaps {
     display: flex;
     flex-direction: row;

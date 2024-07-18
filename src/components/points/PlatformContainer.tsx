@@ -41,7 +41,11 @@ export const PlatformContainer = ({}: Props) => {
             />
 
             {/* additional object */}
-
+            <img
+                src={getIconPlatformByLevel(2, EPlatformItems.Hotel)}
+                className={classNames(styles.object, isDisabled && styles.disabledItem)}
+                alt='additional object'
+            />
         </div>
     );
 };

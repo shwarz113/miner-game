@@ -13,6 +13,7 @@ export type UserData = {
     boost: number;
     turboBoost: number;
     telegramId: number;
+    photo_url: string;
 };
 
 export type UpdateUserData = {
@@ -67,6 +68,7 @@ export const initialUserInfo: UserData = {
     actionCount: 0,
     telegramId: 1,
     id: '',
+    photo_url: '',
 };
 
 export const getUserInfoApi = () => api.get<UserData>('users');
