@@ -22,5 +22,5 @@ export const initialMinersInfo: MinersData = {
     turboBoost: 0,
 };
 
-export const getMinersInfoApi = () => api.get<MinersData>('miners');
+export const getMinersInfoApi = () => api.get<MinersData>('miner');
 // export const updateUserInfoApi = (v: UpdateUserData) => api.patch<{id: string}>('users', v);

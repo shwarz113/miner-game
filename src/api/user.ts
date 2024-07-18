@@ -33,13 +33,13 @@ type ObjectIncomeItem = {
     name: string;
     dailyIncome: number;
     totalIncome: number;
-}
+};
 
 type ActiveIncomeItem = {
     type: string;
     income: number;
     createdAt: string;
-}
+};
 
 export type UserIncomeStats = {
     statistics: {
@@ -49,10 +49,10 @@ export type UserIncomeStats = {
         incomeFromActive: number;
         incomeFromObject: number;
         totalCosts: number;
-    },
-    objectIncome: ObjectIncomeItem[],
-    activeIncome: ActiveIncomeItem[],
-}
+    };
+    objectIncome: ObjectIncomeItem[];
+    activeIncome: ActiveIncomeItem[];
+};
 
 export const initialUserInfo: UserData = {
     username: '',
@@ -75,5 +75,5 @@ export const updateUserInfoApi = (v: UpdateUserData) => api.patch<{ id: string }
 export const inviteApi = (refUserId: string) => api.post<{ id: string }>('new_invite', { id: refUserId });
 export const completeTaskApi = (taskId: string) => api.post<{ id: string }>('new_entry', { id: taskId });
 
-export const getLeadersApi = () => api.get<LeadersItem[]>('users/leaders');
+export const getLeadersApi = () => api.get<{ leaders: LeadersItem[] }>('users/leaders');
 export const getIncomeStatsApi = () => api.get<UserIncomeStats>('users/stats');

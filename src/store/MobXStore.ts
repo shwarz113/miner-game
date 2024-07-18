@@ -63,7 +63,7 @@ class MobXApp {
         getLeadersApi()
             .then((resp) => {
                 console.log('getLeadersApi', resp);
-                this.leaders = resp.data;
+                this.leaders = resp.data.leaders;
             })
             .catch((e) => console.log(e));
     }
