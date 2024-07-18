@@ -18,9 +18,10 @@ import { LeadersContainer } from './pages/leaders';
 import {BoostContainer} from "./pages/boost";
 import {TownContainer} from "./pages/town";
 import {Navbar} from "./components/navbar";
+import { toJS } from 'mobx'
 
 function App() {
-    console.log('app', app);
+    console.log('app', toJS(app));
     const navigate = useNavigate();
     const { pathname } = useLocation();
 

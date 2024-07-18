@@ -20,7 +20,6 @@ export type ObjectItem = {
     status: ObjectItemStatus;
 };
 
-export const getUserObjectsApi = () => api.get<ObjectItem[]>('users/objects');
-export const getObjectsApi = () => api.get<ObjectItem[]>('objects');
+export const getObjectsApi = () => api.get<ObjectItem[]>('object/info');
 
 export const buyObjectApi = (id: string) => api.get<ObjectItem[]>('users/objects', { data: {id} });

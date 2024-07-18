@@ -58,7 +58,7 @@ export const initialUserInfo: UserData = {
     username: '',
     balance: 0,
     countPoints: 0,
-    countClick: 0,
+    countClick: 1000,
     minerId: '',
     level: 1,
     pointsPerClick: 1,

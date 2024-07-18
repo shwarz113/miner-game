@@ -1,20 +1,21 @@
-import { action, makeAutoObservable } from 'mobx';
+import { action, makeAutoObservable, toJS } from 'mobx';
 import {
     completeTaskApi,
+    getIncomeStatsApi,
+    getLeadersApi,
     getUserInfoApi,
     initialUserInfo,
     inviteApi,
+    LeadersItem,
     updateUserInfoApi,
     UserData,
-    getLeadersApi,
-    LeadersItem, getIncomeStatsApi, UserIncomeStats,
+    UserIncomeStats,
 } from 'src/api/user';
-import { buyObjectApi, getObjectsApi, getUserObjectsApi, ObjectItem } from 'src/api/objects';
+import { buyObjectApi, getObjectsApi, ObjectItem, ObjectItemStatus } from 'src/api/objects';
 import { getMinersInfoApi, initialMinersInfo, MinersData } from 'src/api/miner';
 
 class MobXApp {
     userInfo: UserData = initialUserInfo;
-    userObjects: ObjectItem[] = [];
     objects: ObjectItem[] = [];
     leaders: LeadersItem[] = [];
     minersInfo: MinersData = initialMinersInfo;
@@ -26,7 +27,7 @@ class MobXApp {
         // this.userName = window.Telegram?.WebApp?.initDataUnsafe?.user?.username || 'Это тест';
         makeAutoObservable(this);
         this.getUserInfo();
-        this.getUserObjects();
+        this.getObjects();
         setInterval(this.updateUserInfo, 5000);
         console.log('mobx');
     }
@@ -37,15 +38,6 @@ class MobXApp {
             .then((resp) => {
                 console.log('getUserInfoApi', resp);
                 this.userInfo = resp.data;
-            })
-            .catch((e) => console.log(e));
-    }
-    @action
-    getUserObjects() {
-        getUserObjectsApi()
-            .then((resp) => {
-                console.log('getUserObjectsApi', resp);
-                this.userObjects = resp.data;
             })
             .catch((e) => console.log(e));
     }
@@ -88,11 +80,10 @@ class MobXApp {
 
     @action
     updateUserInfo() {
-        console.log('user', this.userInfo);
         if (this.userInfo) {
             updateUserInfoApi({
-                countClick: this.userInfo.countClick,
-                countPoints: this.userInfo.countPoints,
+                countClick: toJS(this.userInfo.countClick),
+                countPoints: toJS(this.userInfo.countPoints),
             });
         }
     }
@@ -100,24 +91,27 @@ class MobXApp {
     @action
     updateUserClicks() {
         updateUserInfoApi({
-            countClick: this.userInfo.countClick,
+            countClick: toJS(this.userInfo.countClick),
         });
     }
 
     @action
     handleTapMiner() {
-        console.log('this.userInfo', this.userInfo)
-        this.userInfo.countClick = this.userInfo.countClick - 1;
-        this.userInfo.countPoints = this.userInfo.countPoints + this.userInfo.pointsPerClick;
-        this.userInfo.balance = this.userInfo.balance + this.userInfo.pointsPerClick;
+        const userInfo = toJS(this.userInfo);
+        userInfo.countClick -= 1;
+        userInfo.countPoints += userInfo.pointsPerClick;
+        userInfo.balance += userInfo.pointsPerClick;
+        this.userInfo = userInfo;
         // todo реализовать подсчет очков, учитывая: турбо режим(х5), частый таппинг (х5) и очки за тап (points_per_click)
     }
 
     @action
     handleBuyObject(id: string) {
         buyObjectApi(id).then(() => {
-            const newObject = this.objects.find((object) => object.id === id) as ObjectItem;
-            this.userObjects = [...this.userObjects, newObject];
+            const newObject = toJS(this.objects).find((object) => object.id === id) as ObjectItem;
+            this.objects = toJS(this.objects).map((v) =>
+                v.id === id ? { ...v, status: ObjectItemStatus.ownedStatus } : v
+            );
         });
     }
     @action

@@ -13,7 +13,7 @@ type Props = {
     app: MobXAppStore;
 };
 export const TownContainer: FC<Props> = ({ app }) => {
-    const { objects, userObjects } = app;
+    const { objects } = app;
     const refCars = useRef<HTMLDivElement>(null);
     const refHotels = useRef<HTMLDivElement>(null);
     const refObjects = useRef<HTMLDivElement>(null);
@@ -34,10 +34,6 @@ export const TownContainer: FC<Props> = ({ app }) => {
     };
 
     const objectsByType = useMemo(() => getObjectsByType(objects), [objects?.length]);
-    const ownedObjectsById = useMemo(
-        () => userObjects.reduce((acc, item) => ({ ...acc, [item.id]: item }), {} as Record<string, ObjectItem>),
-        [userObjects?.length]
-    );
 
     const ownedAmount: Record<ObjectItemType, number> = useMemo(() => {
         return {
@@ -88,7 +84,7 @@ export const TownContainer: FC<Props> = ({ app }) => {
                                 </div>
                             </div>
                             <div className={styles.items}>
-                                {items.map(({ name, dailyIncome, price, id }) => (
+                                {items.map(({ name, dailyIncome, price, status, id }) => (
                                     <AssetItemWrapper
                                         img={imagesByObjectId[id]}
                                         middle={{ content: `+${nFormatter({ num: dailyIncome })} / день` }}
@@ -98,27 +94,20 @@ export const TownContainer: FC<Props> = ({ app }) => {
                                                 onClick={() => {}}
                                                 size={'s'}
                                                 icon={CoinPic}
-                                                type={
-                                                    ownedObjectsById[id].status === ObjectItemStatus.ownedStatus
-                                                        ? 'text'
-                                                        : 'default'
-                                                }
-                                                disabled={
-                                                    ownedObjectsById[id].status ===
-                                                    ObjectItemStatus.notAvailableStatus
-                                                }
+                                                type={status === ObjectItemStatus.ownedStatus ? 'text' : 'default'}
+                                                disabled={status === ObjectItemStatus.notAvailableStatus}
                                                 className={styles.buttonBuy}
                                             >
-                                                {ownedObjectsById[id].status === ObjectItemStatus.ownedStatus
+                                                {status === ObjectItemStatus.ownedStatus
                                                     ? nFormatter({ num: price })
                                                     : `Купить за ${nFormatter({ num: price })}`}
                                             </Button>
                                         }
                                         className={styles.assetItemWrapper}
-                                        {...(ownedObjectsById[id].status === ObjectItemStatus.ownedStatus && {
+                                        {...(status === ObjectItemStatus.ownedStatus && {
                                             status: 'primary',
                                         })}
-                                        {...(ownedObjectsById[id].status === ObjectItemStatus.notAvailableStatus && {
+                                        {...(status === ObjectItemStatus.notAvailableStatus && {
                                             status: 'ghost',
                                         })}
                                     />
