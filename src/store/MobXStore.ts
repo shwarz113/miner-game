@@ -50,7 +50,7 @@ class MobXApp {
     }
     @action
     getMinersInfo() {
-        getMinersInfoApi()
+        getMinersInfoApi(toJS(this.userInfo.minerId))
             .then((resp) => {
                 console.log('getMinersInfoApi', resp);
                 this.minersInfo = resp.data;

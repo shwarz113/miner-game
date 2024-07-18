@@ -70,7 +70,7 @@ export const initialUserInfo: UserData = {
 };
 
 export const getUserInfoApi = () => api.get<UserData>('users');
-export const updateUserInfoApi = (v: UpdateUserData) => api.patch<{ id: string }>('users', v);
+export const updateUserInfoApi = (v: UpdateUserData) => api.post<{ id: string }>('users', v);
 
 export const inviteApi = (refUserId: string) => api.post<{ id: string }>('new_invite', { id: refUserId });
 export const completeTaskApi = (taskId: string) => api.post<{ id: string }>('new_entry', { id: taskId });
