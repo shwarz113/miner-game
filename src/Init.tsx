@@ -1,10 +1,14 @@
 import { DOMAIN } from './constants';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { memo, useEffect } from 'react';
+import {FC, memo, useEffect} from 'react';
 import api from "src/api";
 // @ts-ignore
 const tg = window.Telegram?.WebApp;
-export const Init = memo(() => {
+
+type Props = {
+    getInviteBonus: (refId: string) => void;
+}
+export const Init: FC<Props> = memo(({ getInviteBonus }) => {
     const { pathname } = useLocation();
     const navigate = useNavigate();
     console.log('tg', tg);
@@ -19,7 +23,9 @@ export const Init = memo(() => {
         document.querySelector('.main-container-bg')?.addEventListener('touchmove', (e) => {
             e.preventDefault();
         });
-        // api.get('users').then(resp => console.log('response', resp))
+        if (tg?.initDataUnsafe.start_param) {
+            getInviteBonus(tg?.initDataUnsafe.start_param);
+        }
     }, []);
 
     useEffect(() => {

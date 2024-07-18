@@ -98,9 +98,12 @@
     line-height: 22px;
 }
 .leadersInput div {
-    overflow: hidden;
     color: rgba(255, 255, 255, 0.88);
+    overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .leadersInput img {

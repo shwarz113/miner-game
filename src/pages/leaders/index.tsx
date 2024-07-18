@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useMemo} from 'react';
+import React, { FC, useEffect, useMemo } from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
 import PlusPic from '../../assets/images/plus.png';
 import PlusCirclePic from '../../assets/images/plus-circle.png';
@@ -11,8 +11,8 @@ import styles from './index.module.css';
 import { BlockWrapper } from '../../components/block-wrapper';
 import { leadersMock } from './mock';
 import { LeaderItem } from './LeaderItem';
-import {Button} from "../../components/button";
-import {MobXAppStore} from "src/store/MobXStore";
+import { Button } from '../../components/button';
+import { MobXAppStore } from 'src/store/MobXStore';
 
 const Block = ({
     points,
@@ -48,18 +48,30 @@ const Block = ({
 
 type Props = {
     app: MobXAppStore;
-}
+};
 export const LeadersContainer: FC<Props> = ({ app }) => {
-    const { leaders, userInfo: { id: userId } } = app;
+    const {
+        leaders,
+        userInfo: { id: userId, telegramId },
+    } = app;
+    const inviteLink = `https://t.me/tgame_crypto_bot/miner?startapp=${telegramId}`;
     const inviteContent = useMemo(
         () => (
             <div>
                 <div className={styles.leadersInput}>
-                    <div>https://t.me/miner_bot_rq9u9vweuvewujfuqe09u9w0qufiw</div>
-                    <img src={CopyPic} alt="" />
+                    <div>{inviteLink}</div>
+                    <img
+                        src={CopyPic}
+                        alt=""
+                        onSelect={() => {
+                            navigator.clipboard.writeText(inviteLink);
+                        }}
+                    />
                 </div>
-                <Button onClick={() => {}} icon={PlusCirclePic}>
-                    Пригласить друга
+                <Button onClick={() => {
+                }} icon={PlusCirclePic}>
+                    <a href={`https://t.me/share/url?url=${inviteLink}&text=Заходи в игру и зарабатывай!`}>Пригласить
+                        друга</a>
                 </Button>
             </div>
         ),
@@ -85,26 +97,29 @@ export const LeadersContainer: FC<Props> = ({ app }) => {
         []
     );
     const leadersContent = useMemo(
-        () => leaders?.length ? (
-            <div>
-                <div className={styles.tableHeader}>
-                    <div>Место</div>
-                    <div>Участник</div>
-                    <div>Очки</div>
+        () =>
+            leaders?.length ? (
+                <div>
+                    <div className={styles.tableHeader}>
+                        <div>Место</div>
+                        <div>Участник</div>
+                        <div>Очки</div>
+                    </div>
+                    <div style={{ position: 'relative' }}>
+                        {leaders.map((player) => (
+                            <LeaderItem key={player.id} player={player} isCurrentPlayer={player.id === userId} />
+                        ))}
+                    </div>
                 </div>
-                <div style={{ position: 'relative' }}>
-                    {leaders.map((player) => (
-                        <LeaderItem key={player.id} player={player} isCurrentPlayer={player.id === userId} />
-                    ))}
-                </div>
-            </div>
-        ): <div>Данных по игрокам нет</div>,
+            ) : (
+                <div>Данных по игрокам нет</div>
+            ),
         [leaders]
     );
 
     useEffect(() => {
         app.getLeaders();
-    }, [])
+    }, []);
 
     return (
         <div className={styles.leadersWrapper}>

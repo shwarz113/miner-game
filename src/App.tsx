@@ -23,6 +23,7 @@ import { toJS } from 'mobx'
 function App() {
     console.log('app', toJS(app));
     const { pathname } = useLocation();
+    const getInviteBonus = (refId: string) => app.inviteByRef(refId);
 
     // if (app.isLoading) {
     //     return (
@@ -41,7 +42,7 @@ function App() {
 
     return (
         <div className="App">
-            <Init />
+            <Init getInviteBonus={getInviteBonus} />
             <Header app={app} isMainPage={pathname === DOMAIN} />
             <Routes>
                 <Route path={DOMAIN} element={<MainContainer app={app} />} />

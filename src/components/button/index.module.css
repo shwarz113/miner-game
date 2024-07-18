@@ -15,6 +15,11 @@
     cursor: pointer;
 }
 
+.button a {
+    text-decoration: none;
+    color: #0D1533;
+}
+
 .s {
     font-size: 14px;
     line-height: 22px;
