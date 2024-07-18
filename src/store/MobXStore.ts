@@ -27,7 +27,6 @@ class MobXApp {
         // this.userName = window.Telegram?.WebApp?.initDataUnsafe?.user?.username || 'Это тест';
         makeAutoObservable(this);
         this.getUserInfo();
-        this.getObjects();
         setInterval(this.updateUserInfo, 5000);
         console.log('mobx');
     }
@@ -80,10 +79,11 @@ class MobXApp {
 
     @action
     updateUserInfo() {
-        if (this.userInfo) {
+        const userInfo = toJS(this.userInfo);
+        if (userInfo) {
             updateUserInfoApi({
-                countClick: toJS(this.userInfo.countClick),
-                countPoints: toJS(this.userInfo.countPoints),
+                countClick: userInfo.countClick,
+                countPoints: userInfo.countPoints,
             });
         }
     }

@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useRef, useState } from 'react';
+import React, {FC, useEffect, useMemo, useRef, useState} from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
 import { BlockWrapper } from 'src/components/block-wrapper';
 import styles from './index.module.css';
@@ -13,7 +13,7 @@ type Props = {
     app: MobXAppStore;
 };
 export const TownContainer: FC<Props> = ({ app }) => {
-    const { objects } = app;
+    const { objects, getObjects } = app;
     const refCars = useRef<HTMLDivElement>(null);
     const refHotels = useRef<HTMLDivElement>(null);
     const refObjects = useRef<HTMLDivElement>(null);
@@ -44,6 +44,10 @@ export const TownContainer: FC<Props> = ({ app }) => {
             [ObjectItemType.object]:
                 objectsByType.OBJECT?.findIndex(({ status }) => status !== ObjectItemStatus.ownedStatus) || 0,
         };
+    }, []);
+
+    useEffect(() => {
+        getObjects();
     }, []);
 
     return (

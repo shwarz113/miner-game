@@ -1,4 +1,4 @@
-import React, {FC, useMemo} from 'react';
+import React, {FC, useEffect, useMemo} from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
 import PlusPic from '../../assets/images/plus.png';
 import PlusCirclePic from '../../assets/images/plus-circle.png';
@@ -50,7 +50,7 @@ type Props = {
     app: MobXAppStore;
 }
 export const LeadersContainer: FC<Props> = ({ app }) => {
-    const { leaders, userInfo: { id: userId } } = app;
+    const { leaders, userInfo: { id: userId }, getLeaders } = app;
     const inviteContent = useMemo(
         () => (
             <div>
@@ -101,6 +101,10 @@ export const LeadersContainer: FC<Props> = ({ app }) => {
         ): <div>Данных по игрокам нет</div>,
         [leaders]
     );
+
+    useEffect(() => {
+        getLeaders();
+    }, [])
 
     return (
         <div className={styles.leadersWrapper}>

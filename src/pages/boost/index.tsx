@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
 import MinerMiniPic from '../../assets/images/miner-mini.png';
 import RocketPic from '../../assets/images/rocket.png';
@@ -14,7 +14,11 @@ type Props = {
     app: MobXAppStore;
 }
 export const BoostContainer: FC<Props> = ({ app }) => {
-    const { minersInfo, userInfo } = app;
+    const { minersInfo, userInfo, getMinersInfo } = app;
+
+    useEffect(() => {
+        getMinersInfo();
+    }, [])
 
     return (
         <div className={styles.boostWrapper}>

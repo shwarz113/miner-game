@@ -22,7 +22,6 @@ import { toJS } from 'mobx'
 
 function App() {
     console.log('app', toJS(app));
-    const navigate = useNavigate();
     const { pathname } = useLocation();
 
     // if (app.isLoading) {

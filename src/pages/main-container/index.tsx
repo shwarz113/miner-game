@@ -74,7 +74,7 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
             </div>
             <div className={styles.balanceTaps}>
                 <img src={BalanceTapsPic} alt=""/>
-                <div>240/1000</div>
+                <div>{app.userInfo.countClick}/1000</div>
             </div>
         </div>
     );
