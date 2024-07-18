@@ -27,6 +27,7 @@ class MobXApp {
         makeAutoObservable(this);
         this.getUserInfo();
         this.getUserObjects();
+        setInterval(this.updateUserInfo, 5000);
         console.log('mobx');
     }
 
@@ -103,6 +104,7 @@ class MobXApp {
     @action
     handleTapMiner() {
         this.userInfo.countClick = this.userInfo.countClick - 1;
+        this.userInfo.countPoints = this.userInfo.countClick + this.userInfo.pointsPerClick;
         // todo реализовать подсчет очков, учитывая: турбо режим(х5), частый таппинг (х5) и очки за тап (points_per_click)
     }
 

@@ -51,6 +51,7 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
         if (app.userInfo?.countClick) {
             // gameStore.isTap = true;
             // app.handleTap();
+            app.handleTapMiner();
             handleDebounceClick();
             animatePoints();
         }
