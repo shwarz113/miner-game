@@ -11,7 +11,7 @@ export type UserData = {
     level: number;
     pointsPerClick: number;
     boost: number;
-    turbo_boost: number;
+    turboBoost: number;
     telegramId: number;
 };
 
@@ -28,6 +28,19 @@ export type LeadersItem = {
     rankingPlace: number;
 };
 
+type ObjectIncomeItem = {
+    date: string;
+    name: string;
+    dailyIncome: number;
+    totalIncome: number;
+}
+
+type ActiveIncomeItem = {
+    type: string;
+    income: number;
+    createdAt: string;
+}
+
 export type UserIncomeStats = {
     statistics: {
         balance: number;
@@ -37,17 +50,8 @@ export type UserIncomeStats = {
         incomeFromObject: number;
         totalCosts: number;
     },
-    objectIncome: {
-        balance: number;
-        countPoints: number;
-        dailyIncome: number;
-        totalIncome: number;
-    },
-    activeIncome: {
-        type: string;
-        income: number;
-        createdAt: string;
-    },
+    objectIncome: ObjectIncomeItem[],
+    activeIncome: ActiveIncomeItem[],
 }
 
 export const initialUserInfo: UserData = {
@@ -59,7 +63,7 @@ export const initialUserInfo: UserData = {
     level: 1,
     pointsPerClick: 1,
     boost: 0,
-    turbo_boost: 0,
+    turboBoost: 0,
     actionCount: 0,
     telegramId: 1,
     id: '',

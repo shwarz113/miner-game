@@ -39,9 +39,9 @@ function App() {
             <Routes>
                 <Route path={DOMAIN} element={<MainContainer app={app} />} />
                 <Route path={`${DOMAIN}${PagesEnum.Income}`} element={<IncomeContainer app={app} />} />
-                <Route path={`${DOMAIN}${PagesEnum.Leaders}`} element={<LeadersContainer />} />
-                <Route path={`${DOMAIN}${PagesEnum.Boost}`} element={<BoostContainer />} />
-                <Route path={`${DOMAIN}${PagesEnum.City}`} element={<TownContainer />} />
+                <Route path={`${DOMAIN}${PagesEnum.Leaders}`} element={<LeadersContainer app={app} />} />
+                <Route path={`${DOMAIN}${PagesEnum.Boost}`} element={<BoostContainer app={app} />} />
+                <Route path={`${DOMAIN}${PagesEnum.City}`} element={<TownContainer app={app} />} />
             </Routes>
             <Navbar />
         </div>

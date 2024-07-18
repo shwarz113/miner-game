@@ -16,24 +16,8 @@ import Object2 from '../../assets/images/object-2.png';
 import Object3 from '../../assets/images/object-3.png';
 import Object4 from '../../assets/images/object-4.png';
 import Object5 from '../../assets/images/object-5.png';
-export enum ObjectItemStatus {
-    'paid' = 1,
-    'available' = 2,
-    'not_available' = 3,
-}
-export enum ObjectItemType {
-    'car' = 'car',
-    'hotel' = 'hotel',
-    'object' = 'object',
-}
-type ObjectItem = {
-    id_object: string;
-    type: ObjectItemType;
-    name: string;
-    price: number;
-    daily_income: number;
-    status: ObjectItemStatus;
-};
+import {ObjectItem, ObjectItemStatus, ObjectItemType} from "src/api/objects";
+
 
 export const objectsNameByType: Record<ObjectItemType, string> = {
     [ObjectItemType.car]: 'Машины',
@@ -46,132 +30,132 @@ export const objectsImgByType: Record<ObjectItemType, string> = {
     [ObjectItemType.object]: ObjectPic,
 };
 
-export const objectsMock: ObjectItem[] = [
-    {
-        id_object: '1',
-        type: ObjectItemType.car,
-        name: 'Toyota',
-        price: 100,
-        daily_income: 10,
-        status: ObjectItemStatus.paid,
-    },
-    {
-        id_object: '2',
-        type: ObjectItemType.car,
-        name: 'Audi',
-        price: 1000,
-        daily_income: 250,
-        status: ObjectItemStatus.available,
-    },
-    {
-        id_object: '3',
-        type: ObjectItemType.car,
-        name: 'Porsche',
-        price: 99000,
-        daily_income: 1000,
-        status: ObjectItemStatus.not_available,
-    },
-    {
-        id_object: '4',
-        type: ObjectItemType.car,
-        name: 'Lamborghini',
-        price: 499000,
-        daily_income: 5000,
-        status: ObjectItemStatus.not_available,
-    },
-    {
-        id_object: '5',
-        type: ObjectItemType.car,
-        name: 'Rolls Royce',
-        price: 1999990,
-        daily_income: 25000,
-        status: ObjectItemStatus.not_available,
-    },
+// export const objectsMock: ObjectItem[] = [
+//     {
+//         id: '1',
+//         type: ObjectItemType.car,
+//         name: 'Toyota',
+//         price: 100,
+//         dailyIncome: 10,
+//         status: ObjectItemStatus.ownedStatus,
+//     },
+//     {
+//         id: '2',
+//         type: ObjectItemType.car,
+//         name: 'Audi',
+//         price: 1000,
+//         dailyIncome: 250,
+//         status: ObjectItemStatus.availableStatus,
+//     },
+//     {
+//         id: '3',
+//         type: ObjectItemType.car,
+//         name: 'Porsche',
+//         price: 99000,
+//         dailyIncome: 1000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+//     {
+//         id: '4',
+//         type: ObjectItemType.car,
+//         name: 'Lamborghini',
+//         price: 499000,
+//         dailyIncome: 5000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+//     {
+//         id: '5',
+//         type: ObjectItemType.car,
+//         name: 'Rolls Royce',
+//         price: 1999990,
+//         dailyIncome: 25000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+//
+//     {
+//         id: '6',
+//         type: ObjectItemType.hotel,
+//         name: 'Comfort Inn',
+//         price: 200000,
+//         dailyIncome: 10000,
+//         status: ObjectItemStatus.availableStatus,
+//     },
+//     {
+//         id: '7',
+//         type: ObjectItemType.hotel,
+//         name: 'Panorama Hotel',
+//         price: 790000,
+//         dailyIncome: 50000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+//     {
+//         id: '8',
+//         type: ObjectItemType.hotel,
+//         name: 'Elite Plaza',
+//         price: 5000000,
+//         dailyIncome: 100000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+//     {
+//         id: '9',
+//         type: ObjectItemType.hotel,
+//         name: 'Imperial Residence',
+//         price: 30000000,
+//         dailyIncome: 250000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+//     {
+//         id: '10',
+//         type: ObjectItemType.hotel,
+//         name: 'Atrium Luxe',
+//         price: 900000000,
+//         dailyIncome: 1000000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+//
+//     {
+//         id: '11',
+//         type: ObjectItemType.object,
+//         name: 'Wonderland Park',
+//         price: 100000000,
+//         dailyIncome: 500000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+//     {
+//         id: '12',
+//         type: ObjectItemType.object,
+//         name: 'Aqua Paradise',
+//         price: 5000000000,
+//         dailyIncome: 2500000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+//     {
+//         id: '13',
+//         type: ObjectItemType.object,
+//         name: 'Eiffel tower',
+//         price: 45000000000,
+//         dailyIncome: 7900000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+//     {
+//         id: '14',
+//         type: ObjectItemType.object,
+//         name: 'Empire Business Center',
+//         price: 900000000000,
+//         dailyIncome: 19900000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+//     {
+//         id: '15',
+//         type: ObjectItemType.object,
+//         name: 'Lucky Star Casino',
+//         price: 10000000000000,
+//         dailyIncome: 1000000000,
+//         status: ObjectItemStatus.notAvailableStatus,
+//     },
+// ];
 
-    {
-        id_object: '6',
-        type: ObjectItemType.hotel,
-        name: 'Comfort Inn',
-        price: 200000,
-        daily_income: 10000,
-        status: ObjectItemStatus.available,
-    },
-    {
-        id_object: '7',
-        type: ObjectItemType.hotel,
-        name: 'Panorama Hotel',
-        price: 790000,
-        daily_income: 50000,
-        status: ObjectItemStatus.not_available,
-    },
-    {
-        id_object: '8',
-        type: ObjectItemType.hotel,
-        name: 'Elite Plaza',
-        price: 5000000,
-        daily_income: 100000,
-        status: ObjectItemStatus.not_available,
-    },
-    {
-        id_object: '9',
-        type: ObjectItemType.hotel,
-        name: 'Imperial Residence',
-        price: 30000000,
-        daily_income: 250000,
-        status: ObjectItemStatus.not_available,
-    },
-    {
-        id_object: '10',
-        type: ObjectItemType.hotel,
-        name: 'Atrium Luxe',
-        price: 900000000,
-        daily_income: 1000000,
-        status: ObjectItemStatus.not_available,
-    },
-
-    {
-        id_object: '11',
-        type: ObjectItemType.object,
-        name: 'Wonderland Park',
-        price: 100000000,
-        daily_income: 500000,
-        status: ObjectItemStatus.not_available,
-    },
-    {
-        id_object: '12',
-        type: ObjectItemType.object,
-        name: 'Aqua Paradise',
-        price: 5000000000,
-        daily_income: 2500000,
-        status: ObjectItemStatus.not_available,
-    },
-    {
-        id_object: '13',
-        type: ObjectItemType.object,
-        name: 'Eiffel tower',
-        price: 45000000000,
-        daily_income: 7900000,
-        status: ObjectItemStatus.not_available,
-    },
-    {
-        id_object: '14',
-        type: ObjectItemType.object,
-        name: 'Empire Business Center',
-        price: 900000000000,
-        daily_income: 19900000,
-        status: ObjectItemStatus.not_available,
-    },
-    {
-        id_object: '15',
-        type: ObjectItemType.object,
-        name: 'Lucky Star Casino',
-        price: 10000000000000,
-        daily_income: 1000000000,
-        status: ObjectItemStatus.not_available,
-    },
-];
-
-export const objectsByType = objectsMock.reduce(
+export const getObjectsByType = (list: ObjectItem[]) => list.reduce(
     (acc, item) => ({ ...acc, [item.type]: [...(acc[item.type] || []), item] }),
     {} as Record<ObjectItemType, ObjectItem[]>
 );

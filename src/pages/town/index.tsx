@@ -1,21 +1,19 @@
-import React, { useRef, useState } from 'react';
+import React, { FC, useMemo, useRef, useState } from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
-import { BlockWrapper } from '../../components/block-wrapper';
+import { BlockWrapper } from 'src/components/block-wrapper';
 import styles from './index.module.css';
-import {
-    imagesByObjectId,
-    ObjectItemStatus,
-    ObjectItemType,
-    objectsByType,
-    objectsImgByType,
-    objectsNameByType
-} from './constants';
-import { Button } from '../../components/button';
-import { AssetItemWrapper } from '../../components/asset-item-wrapper';
-import { nFormatter } from '../../utils/formatters';
+import { imagesByObjectId, getObjectsByType, objectsImgByType, objectsNameByType } from './constants';
+import { Button } from 'src/components/button';
+import { AssetItemWrapper } from 'src/components/asset-item-wrapper';
+import { nFormatter } from 'src/utils/formatters';
+import { MobXAppStore } from 'src/store/MobXStore';
+import { ObjectItem, ObjectItemStatus, ObjectItemType } from 'src/api/objects';
 
-export const TownContainer = () => {
-    const data = objectsByType;
+type Props = {
+    app: MobXAppStore;
+};
+export const TownContainer: FC<Props> = ({ app }) => {
+    const { objects, userObjects } = app;
     const refCars = useRef<HTMLDivElement>(null);
     const refHotels = useRef<HTMLDivElement>(null);
     const refObjects = useRef<HTMLDivElement>(null);
@@ -23,39 +21,55 @@ export const TownContainer = () => {
     const [activeTab, setActiveTab] = useState<ObjectItemType>(ObjectItemType.car);
 
     const scrollToCars = () => {
-        refCars?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        refCars?.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
         setActiveTab(ObjectItemType.car);
-    }
-    const scrollToHotels = () => {
-        refHotels?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-        setActiveTab(ObjectItemType.hotel);
-    }
-    const scrollToObjects = () => {
-        refObjects?.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-        setActiveTab(ObjectItemType.object);
-    }
-
-    // todo переписать в сторе
-    const paidAmount: Record<ObjectItemType, number> = {
-        [ObjectItemType.car]: objectsByType.car.findIndex(({ status }) => status !== ObjectItemStatus.paid),
-        [ObjectItemType.hotel]: objectsByType.hotel.findIndex(({ status }) => status !== ObjectItemStatus.paid),
-        [ObjectItemType.object]: objectsByType.object.findIndex(({ status }) => status !== ObjectItemStatus.paid),
     };
+    const scrollToHotels = () => {
+        refHotels?.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        setActiveTab(ObjectItemType.hotel);
+    };
+    const scrollToObjects = () => {
+        refObjects?.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        setActiveTab(ObjectItemType.object);
+    };
+
+    const objectsByType = useMemo(() => getObjectsByType(objects), [objects?.length]);
+    const ownedObjectsById = useMemo(
+        () => userObjects.reduce((acc, item) => ({ ...acc, [item.id]: item }), {} as Record<string, ObjectItem>),
+        [userObjects?.length]
+    );
+
+    const ownedAmount: Record<ObjectItemType, number> = useMemo(() => {
+        return {
+            [ObjectItemType.car]: objectsByType.CAR.findIndex(
+                ({ status }) => status !== ObjectItemStatus.ownedStatus
+            ),
+            [ObjectItemType.hotel]: objectsByType.BUILDING.findIndex(
+                ({ status }) => status !== ObjectItemStatus.ownedStatus
+            ),
+            [ObjectItemType.object]: objectsByType.OBJECT.findIndex(
+                ({ status }) => status !== ObjectItemStatus.ownedStatus
+            ),
+        };
+    }, []);
 
     return (
         <div className={styles.townWrapper}>
             <div className={styles.townTabs}>
                 <div onClick={scrollToCars} className={activeTab === ObjectItemType.car ? styles.activeTab : ''}>
-                    <img src={objectsImgByType.car} alt="" />
-                    {objectsNameByType.car}
+                    <img src={objectsImgByType.CAR} alt="" />
+                    {objectsNameByType.CAR}
                 </div>
                 <div onClick={scrollToHotels} className={activeTab === ObjectItemType.hotel ? styles.activeTab : ''}>
-                    <img src={objectsImgByType.hotel} alt="" />
-                    {objectsNameByType.hotel}
+                    <img src={objectsImgByType.BUILDING} alt="" />
+                    {objectsNameByType.BUILDING}
                 </div>
-                <div onClick={scrollToObjects} className={activeTab === ObjectItemType.object ? styles.activeTab : ''}>
-                    <img src={objectsImgByType.object} alt="" />
-                    {objectsNameByType.object}
+                <div
+                    onClick={scrollToObjects}
+                    className={activeTab === ObjectItemType.object ? styles.activeTab : ''}
+                >
+                    <img src={objectsImgByType.OBJECT} alt="" />
+                    {objectsNameByType.OBJECT}
                 </div>
             </div>
             <div className={styles.townContent}>
@@ -72,32 +86,32 @@ export const TownContainer = () => {
                                 <div>{objectsNameByType[key as ObjectItemType]}</div>
                             </div>
                             <div>
-                                {paidAmount[key as ObjectItemType]} из {items.length}
+                                {ownedAmount[key as ObjectItemType]} из {items.length}
                             </div>
                         </div>
                         <div className={styles.items}>
-                            {items.map(({ name, daily_income, price, status, id_object }) => (
+                            {items.map(({ name, dailyIncome, price, id }) => (
                                 <AssetItemWrapper
-                                    img={imagesByObjectId[id_object]}
-                                    middle={{ content: `+${nFormatter({ num: daily_income })} / день` }}
+                                    img={imagesByObjectId[id]}
+                                    middle={{ content: `+${nFormatter({ num: dailyIncome })} / день` }}
                                     title={name}
                                     button={
                                         <Button
                                             onClick={() => {}}
                                             size={'s'}
                                             icon={CoinPic}
-                                            type={status === ObjectItemStatus.paid ? 'text' : 'default'}
-                                            disabled={status === ObjectItemStatus.not_available}
+                                            type={ownedObjectsById[id].status === ObjectItemStatus.ownedStatus ? 'text' : 'default'}
+                                            disabled={ownedObjectsById[id].status === ObjectItemStatus.notAvailableStatus}
                                             className={styles.buttonBuy}
                                         >
-                                            {status === ObjectItemStatus.paid
+                                            {ownedObjectsById[id].status === ObjectItemStatus.ownedStatus
                                                 ? nFormatter({ num: price })
                                                 : `Купить за ${nFormatter({ num: price })}`}
                                         </Button>
                                     }
                                     className={styles.assetItemWrapper}
-                                    {...(status === ObjectItemStatus.paid && { status: 'primary' })}
-                                    {...(status === ObjectItemStatus.not_available && { status: 'ghost' })}
+                                    {...(ownedObjectsById[id].status === ObjectItemStatus.ownedStatus && { status: 'primary' })}
+                                    {...(ownedObjectsById[id].status === ObjectItemStatus.notAvailableStatus && { status: 'ghost' })}
                                 />
                             ))}
                         </div>
