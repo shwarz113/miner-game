@@ -51,31 +51,31 @@
 .rank-1 {
     background: #FEDA2C;
     border-color: black;
-    color: #0D1533;
 }
 .rank-1 .rankValue {
     background: #F4B74A;
     border-color: black;
+    color: #0D1533!important;
 }
 
 .rank-2 {
     background: #999CAA;
     border-color: black;
-    color: #0D1533;
 }
 .rank-2 .rankValue {
     background: #E9EBF1;
     border-color: black;
+    color: #0D1533!important;
 }
 
 .rank-3 {
     background: #AA936F;
     border-color: black;
-    color: #0D1533;
 }
 .rank-3 .rankValue {
     background: #D6CAB8;
     border-color: black;
+    color: #0D1533!important;
 }
 
 .nameWrapper {
