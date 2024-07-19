@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "./static/css/main.efbcfd85.css",
+    "main.css": "./static/css/main.ea7adeac.css",
     "main.js": "./static/js/main.b9215850.js",
     "static/js/453.a5a72b74.chunk.js": "./static/js/453.a5a72b74.chunk.js",
     "static/media/car_3_level.svg": "./static/media/car_3_level.8c9c589d95effe346c97e681d82cd2c7.svg",
@@ -46,12 +46,12 @@
     "static/media/check.svg": "./static/media/check.76fe4da0070770a8e01629407cd6528d.svg",
     "static/media/chevron-right-black.svg": "./static/media/chevron-right-black.e5d5712573ac43f318b4a9c1abd8fa5d.svg",
     "static/media/chevron-right.svg": "./static/media/chevron-right.5eae513f41242231e2a30c02ed1b8b26.svg",
-    "main.efbcfd85.css.map": "./static/css/main.efbcfd85.css.map",
+    "main.ea7adeac.css.map": "./static/css/main.ea7adeac.css.map",
     "main.b9215850.js.map": "./static/js/main.b9215850.js.map",
     "453.a5a72b74.chunk.js.map": "./static/js/453.a5a72b74.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.efbcfd85.css",
+    "static/css/main.ea7adeac.css",
     "static/js/main.b9215850.js"
   ]
 }

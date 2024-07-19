@@ -90,6 +90,10 @@
     background-image: url("../../assets/images/intro-step-4.png");
     background-position: center 0;
     background-size: cover;
+
+    @media (max-height: 600px) {
+        top: -15px;
+    }
 }
 
 .buttonFinal {
