@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from 'react';
+import React, {FC, useEffect, useMemo, useState} from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
 import PlusPic from '../../assets/images/plus.png';
 import PlusCirclePic from '../../assets/images/plus-circle.png';
@@ -13,6 +13,7 @@ import { leadersMock } from './mock';
 import { LeaderItem } from './LeaderItem';
 import { Button } from '../../components/button';
 import { MobXAppStore } from 'src/store/MobXStore';
+import CheckSvg from "src/assets/svg/check.svg";
 
 const Block = ({
     points,
@@ -54,6 +55,7 @@ export const LeadersContainer: FC<Props> = ({ app }) => {
         leaders,
         userInfo: { id: userId, telegramId },
     } = app;
+    const [isCopied, setIsCopied] = useState(false);
     const inviteLink = `https://t.me/tgame_crypto_bot/miner?startapp=${telegramId}`;
     const inviteContent = useMemo(
         () => (
@@ -61,21 +63,24 @@ export const LeadersContainer: FC<Props> = ({ app }) => {
                 <div className={styles.leadersInput}>
                     <div>{inviteLink}</div>
                     <img
-                        src={CopyPic}
+                        src={isCopied ? CheckSvg: CopyPic}
                         alt=""
-                        onSelect={() => {
+                        onClick={() => {
                             navigator.clipboard.writeText(inviteLink);
+                            setIsCopied(true);
+                            setTimeout(() => setIsCopied(false), 2000)
                         }}
                     />
                 </div>
-                <Button onClick={() => {
-                }} icon={PlusCirclePic}>
-                    <a href={`https://t.me/share/url?url=${inviteLink}&text=Заходи в игру и зарабатывай!`}>Пригласить
-                        друга</a>
+                <Button
+                    icon={PlusCirclePic}
+                    href={`https://t.me/share/url?url=${inviteLink}&text=Заходи в игру и зарабатывай!`}
+                >
+                    Пригласить друга
                 </Button>
             </div>
         ),
-        []
+        [isCopied]
     );
     const bonusesContent = useMemo(
         () => (

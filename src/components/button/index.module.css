@@ -13,11 +13,7 @@
     line-height: 24px;
     gap: 8px;
     cursor: pointer;
-}
-
-.button a {
     text-decoration: none;
-    color: #0D1533;
 }
 
 .s {
