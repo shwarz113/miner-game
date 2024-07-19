@@ -23,29 +23,35 @@ export const IntroContainer = () => {
     const step1 = (
         <div className={styles.step}>
             <img className={styles.introBg} src={IntroBg} alt="" />
-            <div className={styles.title}>Кликайте на экран и зарабатывайте монеты</div>
-            <div className={styles.subtitle}>
-                Вы можете использовать бусты и пополнять энергию чтобы получить больше монет
+            <div style={{ minHeight: '125px' }}>
+                <div className={styles.title}>Кликайте на экран и зарабатывайте монеты</div>
+                <div className={styles.subtitle}>
+                    Вы можете использовать бусты и пополнять энергию чтобы получить больше монет
+                </div>
             </div>
-            <img className={styles.phone} src={IntroPic1} alt="" />
+            <img className={styles.phone} src={IntroPic1} alt=""/>
         </div>
     );
 
     const step2 = (
         <div className={styles.step}>
-            <img className={styles.introBg} src={IntroBg} alt="" />
-            <div className={styles.title}>Улучшайте свой город</div>
-            <div className={styles.subtitle}>Покупайте недвижимость, чтобы увеличить свой пассивный доход</div>
-            <img className={styles.phone} src={IntroPic2} alt="" />
+            <img className={styles.introBg} src={IntroBg} alt=""/>
+            <div style={{minHeight: '125px'}}>
+                <div className={styles.title}>Улучшайте свой город</div>
+                <div className={styles.subtitle}>Покупайте недвижимость, чтобы увеличить свой пассивный доход</div>
+            </div>
+            <img className={styles.phone} src={IntroPic2} alt=""/>
         </div>
     );
 
     const step3 = (
         <div className={styles.step}>
-            <img className={styles.introBg} src={IntroBg} alt="" />
-            <div className={styles.title}>Приглашайте друзей и получайте бонусы вместе</div>
-            <div className={styles.subtitle}>Монеты получите вы и ваш друг</div>
-            <img className={styles.phone} src={IntroPic3} alt="" />
+            <img className={styles.introBg} src={IntroBg} alt=""/>
+            <div style={{minHeight: '125px'}}>
+                <div className={styles.title}>Приглашайте друзей и получайте бонусы вместе</div>
+                <div className={styles.subtitle}>Монеты получите вы и ваш друг</div>
+            </div>
+            <img className={styles.phone} src={IntroPic3} alt=""/>
         </div>
     );
 
