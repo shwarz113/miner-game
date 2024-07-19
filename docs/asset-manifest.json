@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.e3268d72.css",
-    "main.js": "./static/js/main.9215c81e.js",
+    "main.css": "./static/css/main.064c7a72.css",
+    "main.js": "./static/js/main.e8ce03b3.js",
     "static/js/453.a5a72b74.chunk.js": "./static/js/453.a5a72b74.chunk.js",
     "static/media/car_3_level.svg": "./static/media/car_3_level.8c9c589d95effe346c97e681d82cd2c7.svg",
     "static/media/hotel_2_level.svg": "./static/media/hotel_2_level.bc9e9ec7b33d8c015ccc5ca1dcd17517.svg",
@@ -19,9 +19,16 @@
     "static/media/car_4_level.svg": "./static/media/car_4_level.bb63ff60878083f85f61cad8370dcc1a.svg",
     "static/media/object_4_level.svg": "./static/media/object_4_level.479397658f89238d1f10620785496af0.svg",
     "static/media/car_1_level.svg": "./static/media/car_1_level.cd26fb2db1890bedcfbd80594a3557bd.svg",
+    "static/media/intro-bg.png": "./static/media/intro-bg.6ff34ec400fb3a9e7d16.png",
     "static/media/miner-wrapper.png": "./static/media/miner-wrapper.f726b2622bc58bf0d4e6.png",
+    "static/media/intro-step-4.png": "./static/media/intro-step-4.8506fd12c0d5781817fd.png",
     "static/media/miner-1.png": "./static/media/miner-1.7fa5607ed8a27d090732.png",
+    "static/media/intro-step-1.png": "./static/media/intro-step-1.630a2fe737cd6e44730b.png",
+    "static/media/start-bg.png": "./static/media/start-bg.749a61eaf224971cc68b.png",
+    "static/media/intro-step-3.png": "./static/media/intro-step-3.9ebf4936225f26791f28.png",
+    "static/media/intro-step-2.png": "./static/media/intro-step-2.cc996f5e4204dc2ed77f.png",
     "static/media/miner.svg": "./static/media/miner.c368a97f1eb08cb074cc878609f8fb38.svg",
+    "static/media/logo-game.png": "./static/media/logo-game.035619d744a24d7b8520.png",
     "static/media/object-2.png": "./static/media/object-2.d83b813125194e2bea40.png",
     "static/media/object-1.png": "./static/media/object-1.4131640c8acdaee698bc.png",
     "static/media/hotel-3.png": "./static/media/hotel-3.25c5d6e2690bb4882bff.png",
@@ -37,12 +44,14 @@
     "static/media/coin-header.svg": "./static/media/coin-header.cbb18ad02190bc354ca3932545bc55a3.svg",
     "index.html": "./index.html",
     "static/media/check.svg": "./static/media/check.76fe4da0070770a8e01629407cd6528d.svg",
-    "main.e3268d72.css.map": "./static/css/main.e3268d72.css.map",
-    "main.9215c81e.js.map": "./static/js/main.9215c81e.js.map",
+    "static/media/chevron-right-black.svg": "./static/media/chevron-right-black.e5d5712573ac43f318b4a9c1abd8fa5d.svg",
+    "static/media/chevron-right.svg": "./static/media/chevron-right.5eae513f41242231e2a30c02ed1b8b26.svg",
+    "main.064c7a72.css.map": "./static/css/main.064c7a72.css.map",
+    "main.e8ce03b3.js.map": "./static/js/main.e8ce03b3.js.map",
     "453.a5a72b74.chunk.js.map": "./static/js/453.a5a72b74.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e3268d72.css",
-    "static/js/main.9215c81e.js"
+    "static/css/main.064c7a72.css",
+    "static/js/main.e8ce03b3.js"
   ]
 }

@@ -1,0 +1,65 @@
+.wrapper {
+    position: relative;
+    background: #0D1533;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.startBg {
+    position: absolute;
+    max-width: 390px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo {
+    position: relative;
+    max-width: 250px;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+.text {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.48px;
+    color: white;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards, pulse 1s 1.5s infinite;
+}
+
+.gradient {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 325px;
+    height: 370px;
+    border-radius: 250px;
+    background: linear-gradient(270deg, rgba(255, 0, 153, 0.24) 0%, rgba(97, 0, 255, 0.24) 100%);
+    filter: blur(50px);
+}
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes pulse {
+    0% {
+        opacity: .6;
+    }
+    100% {
+        opacity: 1;
+    }
+}

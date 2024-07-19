@@ -19,6 +19,8 @@ import {BoostContainer} from "./pages/boost";
 import {TownContainer} from "./pages/town";
 import {Navbar} from "./components/navbar";
 import { toJS } from 'mobx'
+import {IntroContainer} from "src/pages/intro";
+import {StartContainer} from "src/pages/start";
 
 function App() {
     console.log('app', toJS(app));
@@ -32,14 +34,14 @@ function App() {
     //         </div>
     //     )
     // }
-    const updateUserInfo = () => setTimeout(() => {
-        app.updateUserInfo();
-        updateUserInfo();
-    }, 5000)
-    useEffect(() => {
-        updateUserInfo();
-    }, []);
 
+    if (pathname === `/${PagesEnum.Start}`) {
+        return <StartContainer />
+    }
+
+    if (pathname === `/${PagesEnum.Intro}`) {
+        return <IntroContainer />
+    }
     return (
         <div className="App">
             <Init getInviteBonus={getInviteBonus} />

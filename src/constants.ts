@@ -6,6 +6,8 @@ export enum PagesEnum {
     Miner = 'miner',
     Income = 'income',
     Boost = 'boost',
+    Intro = 'intro',
+    Start = 'start',
 }
 
 export const DEFAULT_CLICKS_AMOUNT = 1000;

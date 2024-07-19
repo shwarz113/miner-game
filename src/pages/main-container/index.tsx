@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useRef, useState } from 'react';
+import React, {FC, useCallback, useEffect, useRef, useState} from 'react';
 // import AnimatedNumber from 'animated-number-react';
 import { action } from 'mobx';
 // import { TURBO_TIME } from '../../store/constants';
@@ -61,6 +61,14 @@ export const MainContainer: FC<Props> = observer(({ app }) => {
     const touchEnd = () => minerRef?.current?.classList.remove(styles.clicked);
 
     // const formatTimerValue = (v: number) => ((TURBO_TIME - v) / 1000).toFixed(2);
+
+    const updateUserInfo = () => setTimeout(() => {
+        app.updateUserInfo();
+        updateUserInfo();
+    }, 5000)
+    useEffect(() => {
+        updateUserInfo();
+    }, []);
 
     return (
         <div className={styles.mainContainer}>

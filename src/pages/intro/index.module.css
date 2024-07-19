@@ -1,0 +1,100 @@
+.wrapper {
+    position: relative;
+    background: #0D1533;
+    padding-top: 40px;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.step {
+    position: relative;
+    max-width: 390px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+.title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px; /* 133.333% */
+    letter-spacing: -0.48px;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.60);
+    margin: 0 24px;
+}
+
+.phone {
+    position: relative;
+    max-width: 260px;
+}
+
+.introBg {
+    position: absolute;
+    max-width: 390px;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.button {
+    display: flex;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: rgba(160, 174, 255, 0.16);
+    width: fit-content;
+    color: white;
+}
+
+.button img {
+    height: 13px;
+}
+
+.footer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 33vh;
+    width: 100%;
+    bottom: 40px;
+    left: 0;
+    background: rgb(13,21,51);
+    background: linear-gradient(0deg, rgba(13,21,51,1) 0%, rgba(13,21,51,1) 78%, rgba(165,25,255,0) 100%);
+}
+
+.coin {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-image: url("../../assets/images/intro-step-4.png");
+    background-position: center -95px;
+    background-size: cover;
+}
+
+.buttonFinal {
+    width: 100%;
+    margin: 0 24px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+.buttonFinal img {
+    height: 13px;
+    margin-top: 2px;
+}
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
