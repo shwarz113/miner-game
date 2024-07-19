@@ -83,7 +83,7 @@ class MobXApp {
             updateUserInfoApi({
                 countClick: userInfo.countClick,
                 countPoints: userInfo.countPoints,
-                updatedAt: Math.floor(new Date().getTime() / 1000),
+                updatedAt: new Date().toISOString(),
             });
         }
     }
@@ -92,7 +92,7 @@ class MobXApp {
     updateUserClicks() {
         updateUserInfoApi({
             countClick: toJS(this.userInfo.countClick),
-            updatedAt: Math.floor(new Date().getTime() / 1000),
+            updatedAt: new Date().toISOString(),
         });
     }
 
