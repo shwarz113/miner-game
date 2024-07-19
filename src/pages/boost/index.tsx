@@ -9,7 +9,7 @@ import { MinerBlock } from 'src/components/miner-block';
 import { AssetItemWrapper } from 'src/components/asset-item-wrapper';
 import { MobXAppStore } from 'src/store/MobXStore';
 import styles from './index.module.css';
-import { DOMAIN } from 'src/constants';
+import {DOMAIN, PagesEnum} from 'src/constants';
 import { useNavigate } from 'react-router-dom';
 
 type Props = {
@@ -29,7 +29,7 @@ export const BoostContainer: FC<Props> = ({ app }) => {
 
     const activateRecharge = () => {
         if (userInfo.boost) {
-            navigate(DOMAIN);
+            navigate(`${DOMAIN}${PagesEnum.Main}`);
             app.handleRecharge();
         }
     };

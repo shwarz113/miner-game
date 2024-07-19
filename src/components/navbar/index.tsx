@@ -17,7 +17,7 @@ export const Navbar = () => {
         navigate(`${DOMAIN}${PagesEnum.Income}`);
     };
     const goToMain = () => {
-        navigate(DOMAIN);
+        navigate(`${DOMAIN}${PagesEnum.Main}`);
     };
     const goToCity = () => {
         navigate(`${DOMAIN}${PagesEnum.City}`);

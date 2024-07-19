@@ -35,7 +35,7 @@ function App() {
     //     )
     // }
 
-    if (pathname === `/${PagesEnum.Start}`) {
+    if (pathname === DOMAIN) {
         return <StartContainer />
     }
 
@@ -45,9 +45,9 @@ function App() {
     return (
         <div className="App">
             <Init getInviteBonus={getInviteBonus} />
-            <Header app={app} isMainPage={pathname === DOMAIN} />
+            <Header app={app} isMainPage={pathname === `${DOMAIN}${PagesEnum.Main}`} />
             <Routes>
-                <Route path={DOMAIN} element={<MainContainer app={app} />} />
+                <Route path={`${DOMAIN}${PagesEnum.Main}`} element={<MainContainer app={app} />} />
                 <Route path={`${DOMAIN}${PagesEnum.Income}`} element={<IncomeContainer app={app} />} />
                 <Route path={`${DOMAIN}${PagesEnum.Leaders}`} element={<LeadersContainer app={app} />} />
                 <Route path={`${DOMAIN}${PagesEnum.Boost}`} element={<BoostContainer app={app} />} />

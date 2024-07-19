@@ -9,12 +9,12 @@ import LogoPic from 'src/assets/images/logo-game.png';
 import { Button } from 'src/components/button';
 import styles from './index.module.css';
 import {useNavigate} from "react-router-dom";
-import {DOMAIN} from "src/constants";
+import {DOMAIN, PagesEnum} from "src/constants";
 export const IntroContainer = () => {
     const [step, setStep] = useState(1);
     const navigate = useNavigate();
     const goToMain = () => {
-        navigate(DOMAIN);
+        navigate(`${DOMAIN}${PagesEnum.Main}`);
         // todo вернуть установку параметра
         // localStorage.setItem('intro', '1');
     };

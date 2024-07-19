@@ -1,4 +1,4 @@
-import { DOMAIN } from './constants';
+import {DOMAIN, PagesEnum} from './constants';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {FC, memo, useEffect} from 'react';
 import api from "src/api";
@@ -14,7 +14,7 @@ export const Init: FC<Props> = memo(({ getInviteBonus }) => {
     console.log('tg', tg);
     const BackButton = tg?.BackButton;
     BackButton?.onClick(function () {
-        navigate(DOMAIN);
+        navigate(`${DOMAIN}${PagesEnum.Main}`);
     });
 
     useEffect(() => {
@@ -33,7 +33,7 @@ export const Init: FC<Props> = memo(({ getInviteBonus }) => {
     }, [tg?.isExpanded]);
 
     useEffect(() => {
-        if (pathname === DOMAIN) {
+        if (pathname === `${DOMAIN}${PagesEnum.Main}`) {
             BackButton?.hide();
         } else {
             BackButton?.show();
