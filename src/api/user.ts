@@ -18,7 +18,8 @@ export type UserData = {
 
 export type UpdateUserData = {
     countPoints?: number;
-    countClick: number;
+    countClick?: number;
+    minerId?: string;
     updatedAt: string;
 };
 

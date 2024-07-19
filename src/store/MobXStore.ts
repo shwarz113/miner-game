@@ -13,6 +13,7 @@ import {
 } from 'src/api/user';
 import { buyObjectApi, getObjectsApi, ObjectItem, ObjectItemStatus } from 'src/api/objects';
 import { getMinersInfoApi, initialMinersInfo, MinersData } from 'src/api/miner';
+import {DEFAULT_CLICKS_AMOUNT} from "src/constants";
 
 class MobXApp {
     userInfo: UserData = initialUserInfo;
@@ -97,6 +98,14 @@ class MobXApp {
     }
 
     @action
+    buyMiner(minerId: string) {
+        updateUserInfoApi({
+            minerId,
+            updatedAt: new Date().toISOString(),
+        });
+    }
+
+    @action
     handleTapMiner() {
         const userInfo = toJS(this.userInfo);
         userInfo.countClick -= 1;
@@ -104,6 +113,13 @@ class MobXApp {
         userInfo.balance += userInfo.pointsPerClick;
         this.userInfo = userInfo;
         // todo реализовать подсчет очков, учитывая: турбо режим(х5), частый таппинг (х5) и очки за тап (points_per_click)
+    }
+
+    @action
+    handleRecharge() {
+        const userInfo = toJS(this.userInfo);
+        userInfo.countClick = DEFAULT_CLICKS_AMOUNT;
+        this.userInfo = userInfo;
     }
 
     @action

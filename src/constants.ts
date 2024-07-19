@@ -1,4 +1,3 @@
-export const SOCKET_URL = 'wss://tgame-crypto-coin-kagertanin.amvera.io/connect';
 export const DOMAIN = process.env.NODE_ENV === 'production' ? '/miner-game/' : '/';
 
 export enum PagesEnum {
@@ -8,3 +7,5 @@ export enum PagesEnum {
     Income = 'income',
     Boost = 'boost',
 }
+
+export const DEFAULT_CLICKS_AMOUNT = 1000;
