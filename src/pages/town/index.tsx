@@ -2,18 +2,21 @@ import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
 import CoinPic from '../../assets/svg/coin-header.svg';
 import { BlockWrapper } from 'src/components/block-wrapper';
 import styles from './index.module.css';
-import { imagesByObjectId, getObjectsByType, objectsImgByType, objectsNameByType } from './constants';
+import { getObjectsByType, imagesByObjectId, objectsImgByType, objectsNameByType } from './constants';
 import { Button } from 'src/components/button';
 import { AssetItemWrapper } from 'src/components/asset-item-wrapper';
 import { nFormatter } from 'src/utils/formatters';
 import { MobXAppStore } from 'src/store/MobXStore';
-import { ObjectItem, ObjectItemStatus, ObjectItemType } from 'src/api/objects';
+import { ObjectItemStatus, ObjectItemType } from 'src/api/objects';
 
 type Props = {
     app: MobXAppStore;
 };
 export const TownContainer: FC<Props> = ({ app }) => {
-    const { objects } = app;
+    const {
+        objects,
+        userInfo: { balance },
+    } = app;
     const refCars = useRef<HTMLDivElement>(null);
     const refHotels = useRef<HTMLDivElement>(null);
     const refObjects = useRef<HTMLDivElement>(null);
@@ -88,34 +91,41 @@ export const TownContainer: FC<Props> = ({ app }) => {
                                 </div>
                             </div>
                             <div className={styles.items}>
-                                {items.map(({ name, dailyIncome, price, status, id }) => (
-                                    <AssetItemWrapper
-                                        img={imagesByObjectId[id]}
-                                        middle={{ content: `+${nFormatter({ num: dailyIncome })} / день` }}
-                                        title={name}
-                                        button={
-                                            <Button
-                                                onClick={() => {}}
-                                                size={'s'}
-                                                icon={CoinPic}
-                                                type={status === ObjectItemStatus.ownedStatus ? 'text' : 'default'}
-                                                disabled={status === ObjectItemStatus.notAvailableStatus}
-                                                className={styles.buttonBuy}
-                                            >
-                                                {status === ObjectItemStatus.ownedStatus
-                                                    ? nFormatter({ num: price })
-                                                    : `Купить за ${nFormatter({ num: price })}`}
-                                            </Button>
-                                        }
-                                        className={styles.assetItemWrapper}
-                                        {...(status === ObjectItemStatus.ownedStatus && {
-                                            status: 'primary',
-                                        })}
-                                        {...(status === ObjectItemStatus.notAvailableStatus && {
-                                            status: 'ghost',
-                                        })}
-                                    />
-                                ))}
+                                {items.map(({ name, dailyIncome, price, status, id }) => {
+                                    const available =
+                                        status === ObjectItemStatus.availableStatus ||
+                                        (balance >= price && status !== ObjectItemStatus.ownedStatus);
+                                    const notAvailable = status === ObjectItemStatus.notAvailableStatus && !available;
+                                    const owned = status === ObjectItemStatus.ownedStatus;
+                                    return (
+                                        <AssetItemWrapper
+                                            img={imagesByObjectId[id]}
+                                            middle={{ content: `+${nFormatter({ num: dailyIncome })} / день` }}
+                                            title={name}
+                                            button={
+                                                <Button
+                                                    onClick={() => {}}
+                                                    size={'s'}
+                                                    icon={CoinPic}
+                                                    type={owned ? 'text' : 'default'}
+                                                    disabled={notAvailable}
+                                                    className={styles.buttonBuy}
+                                                >
+                                                    {owned
+                                                        ? nFormatter({ num: price })
+                                                        : `Купить за ${nFormatter({ num: price })}`}
+                                                </Button>
+                                            }
+                                            className={styles.assetItemWrapper}
+                                            {...(owned && {
+                                                status: 'primary',
+                                            })}
+                                            {...(notAvailable && {
+                                                status: 'ghost',
+                                            })}
+                                        />
+                                    );
+                                })}
                             </div>
                         </BlockWrapper>
                     ))
