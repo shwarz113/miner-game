@@ -22,4 +22,4 @@ export type ObjectItem = {
 
 export const getObjectsApi = () => api.get<ObjectItem[]>('object/info');
 
-export const buyObjectApi = (id: string) => api.get<ObjectItem[]>('object', { data: {id} });
+export const buyObjectApi = (id: string) => api.post<ObjectItem[]>('object', { id });
