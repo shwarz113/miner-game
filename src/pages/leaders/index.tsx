@@ -74,7 +74,7 @@ export const LeadersContainer: FC<Props> = ({ app }) => {
                 </div>
                 <Button
                     icon={PlusCirclePic}
-                    href={`https://t.me/share/url?url=${inviteLink}&text=Заходи в игру и зарабатывай!`}
+                    href={`https://t.me/share/url?url=${inviteLink}&text=Заходи в игру и зарабатывай!💸🔥`}
                 >
                     Пригласить друга
                 </Button>
