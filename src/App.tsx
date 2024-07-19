@@ -39,7 +39,7 @@ function App() {
         return <StartContainer />
     }
 
-    if (pathname === `/${PagesEnum.Intro}`) {
+    if (pathname === `${DOMAIN}${PagesEnum.Intro}`) {
         return <IntroContainer />
     }
     return (
