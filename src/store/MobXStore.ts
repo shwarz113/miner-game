@@ -109,12 +109,12 @@ class MobXApp {
     @action
     handleBuyObject(id: string) {
         buyObjectApi(id).then(() => {
-            this.objects = toJS(this.objects || []).map((v) =>
-                v.id === id ? { ...v, status: ObjectItemStatus.ownedStatus } : v
-            );
+            // this.objects = toJS(this.objects || []).map((v) =>
+            //     v.id === id ? { ...v, status: ObjectItemStatus.ownedStatus } : v
+            // );
+            this.getObjects();
+            this.getUserInfo();
         });
-        this.getObjects();
-        this.getUserInfo();
     }
     @action
     inviteByRef(refUserId: string) {

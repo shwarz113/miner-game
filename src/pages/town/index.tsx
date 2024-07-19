@@ -104,7 +104,7 @@ export const TownContainer: FC<Props> = ({ app }) => {
                                             title={name}
                                             button={
                                                 <Button
-                                                    onClick={() => {}}
+                                                    onClick={() => app.handleBuyObject(id)}
                                                     size={'s'}
                                                     icon={CoinPic}
                                                     type={owned ? 'text' : 'default'}
