@@ -11,7 +11,11 @@ type Props = {
     isMainPage: boolean;
 }
 export const Header: FC<Props> = observer(({ app, isMainPage }) => {
-    const { userInfo: { balance, username, photo_url }} = app;
+    const { userInfo: { balance, username }} = app;
+
+    // TODO: очистить консоль
+    console.log('window', window.Telegram);
+    const photo_url = window.Telegram?.WebApp?.initDataUnsafe.user?.photo_url;
 
     const iconAvatar = photo_url ? photo_url: Avatar;
     return (
